@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/leighton-digital/cloud-blocks/compare/v1.1.1...v1.1.2) (2025-09-24)
+
+
+### Bug Fixes
+
+* fixed broken links for the Leighton footer image ([a9606cd](https://github.com/leighton-digital/cloud-blocks/commit/a9606cda99697735cc9f11f32da85365d417ac4c))
+
 ## [1.1.1](https://github.com/leighton-digital/cloud-blocks/compare/v1.1.0...v1.1.1) (2025-09-24)
 
 

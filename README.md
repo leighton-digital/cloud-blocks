@@ -221,4 +221,4 @@ MIT License — see the [LICENSE](https://github.com/leighton-digital/cloud-bloc
 
 ---
 
-<img src="https://raw.githubusercontent.com/leighton-digital/cloud-blocks/blob/main/images/leighton-logo.svg" width="200" alt="Leighton Digital logo" />
+<img src="https://raw.githubusercontent.com/leighton-digital/cloud-blocks/HEAD/images/leighton-logo.svg" width="200" alt="Leighton Digital logo" />

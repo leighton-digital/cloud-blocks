@@ -81,4 +81,4 @@ If you have any questions about contributing, feel free to open an issue or cont
 
 ---
 
-<img src="https://raw.githubusercontent.com/leighton-digital/cloud-blocks/blob/main/images/leighton-logo.svg" width="200" />
+<img src="https://raw.githubusercontent.com/leighton-digital/cloud-blocks/HEAD/images/leighton-logo.svg" width="200" />

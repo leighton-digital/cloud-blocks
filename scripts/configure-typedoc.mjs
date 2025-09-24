@@ -82,11 +82,32 @@ async function renameModulesMarkdown() {
 }
 
 /**
- * Process the 01-Constructs.md file to remove any lines containing "_docs".
+ * Process the 01-Constructs.md file to remove any lines containing "_docs",
+ * fix duplicate text in links, remove index.md from paths, and update the heading.
  */
 async function processModulesMarkdown() {
   const file = path.join(docsRefDir, '01-Constructs/01-Constructs.md');
-  const out = readFileSync(file, "utf8").split(/\r?\n/).filter(l => !l.includes("_docs")).join("\n");
+  let content = readFileSync(file, "utf8");
+
+  // Split into lines and filter out lines containing "_docs"
+  let lines = content.split(/\r?\n/).filter(l => !l.includes("_docs"));
+
+  // Fix duplicate text in links and remove index.md from paths
+  lines = lines.map(line => {
+    // Change heading from "## Modules" to "# Constructs"
+    if (line.trim() === "## Modules") {
+      return "# Constructs";
+    }
+
+    // Match markdown links and simplify by removing everything after the first /
+    // Pattern: [text/anything](path/anything/index.md) or [text/anything](path/anything/)
+    const linkPattern = /\[([^\/\]]+)\/[^\]]*\]\(([^\/\)]+)\/[^\)]*\)/g;
+
+    // Replace with simplified version: [construct-name](construct-name/)
+    return line.replace(linkPattern, '[$1]($2/)');
+  });
+
+  const out = lines.join("\n");
   console.log(out);
   writeFileSync(file, out);
 }

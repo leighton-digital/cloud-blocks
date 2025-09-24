@@ -1,12 +1,11 @@
-<img width="50px" height="50px" align="right" alt="Cloud Blocks logo" src="./images/cloud-blocks.png?sanitize=true" title="Leighton Cloud Blocks"/>
+<img width="50px" height="50px" align="right" alt="Cloud Blocks logo" src="https://raw.githubusercontent.com/leighton-digital/cloud-blocks/HEAD/images/cloud-blocks.png?sanitize=true" title="Leighton Cloud Blocks"/>
 
 # Cloud Blocks
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/leighton-digital/cloud-blocks/blob/main/LICENSE)
 ![Maintained](https://img.shields.io/maintenance/yes/2025)
-[![ci](https://github.com/leighton-digital/cloud-blocks/actions/workflows/ci.yml/badge.svg)](https://github.com/leighton-digital/cloud-blocks/actions/workflows/ci.yml)
-[![release](https://github.com/leighton-digital/cloud-blocks/actions/workflows/release.yml/badge.svg)](https://github.com/leighton-digital/cloud-blocks/actions/workflows/release.yml)
-![Code style: Biome](https://img.shields.io/badge/code%20style-biome-60A5FA?logo=biome)
+[![CI](https://github.com/leighton-digital/cloud-blocks/actions/workflows/main.yaml/badge.svg)](https://github.com/leighton-digital/cloud-blocks/actions/workflows/main.yaml)
+[![Release](https://github.com/leighton-digital/cloud-blocks/actions/workflows/release-publication.yaml/badge.svg)](https://github.com/leighton-digital/cloud-blocks/actions/workflows/release-publication.yaml)![Code style: Biome](https://img.shields.io/badge/code%20style-biome-60A5FA?logo=biome)
 
 **Cloud Blocks** is an open-source collection of **AWS CDK constructs** designed to help teams build secure, reusable, and production-ready cloud infrastructure faster.
 
@@ -222,4 +221,4 @@ MIT License — see the [LICENSE](https://github.com/leighton-digital/cloud-bloc
 
 ---
 
-<img src="https://github.com/leighton-digital/cloud-blocks/blob/274740c71af807962013c4fde743a8e08abb85d6/images/leighton-logo.svg" width="200" alt="Leighton Digital logo" />
+<img src="https://raw.githubusercontent.com/leighton-digital/cloud-blocks/blob/main/images/leighton-logo.svg" width="200" alt="Leighton Digital logo" />

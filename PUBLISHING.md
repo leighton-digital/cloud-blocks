@@ -73,19 +73,19 @@ Releases are created **automatically** on pushes to `main` that include qualifyi
 
 ### 1) Workflow file
 
-The release is automatically performed through the [GitHub Release Workflow](.github/workflows/release.yml)
+The release is automatically performed through the [GitHub Release Workflow](https://github.com/leighton-digital/cloud-blocks/blob/main/.github/workflows/release-publication.yaml)
 
 
 ### 2) semantic-release config
 
-The [releaserc.json](.releaserc.json) provides the release configuration.
+The [releaserc.json](https://github.com/leighton-digital/cloud-blocks/blob/main/.releaserc.json) provides the release configuration.
 
 ### 3) Dependencies
 
 The following packages have been installed to release the package:
 
 ```bash
-semantic-release @semantic-release/{npm,git,github,changelog,commit-analyzer,release-notes-generator}
+semantic-release @semantic-release/{npm,git,changelog,commit-analyzer,release-notes-generator}
 ```
 
 > Tip: To validate locally without publishing, run:

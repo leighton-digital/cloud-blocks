@@ -183,4 +183,4 @@ const prodTable = new IdempotencyTable(this, 'ProdIdempotencyTable', {
 * **Lambda permission errors** → Ensure you've granted `grantReadWriteData()` permissions for the table to your Lambda function
 * **Powertools not finding table** → Verify the table name environment variable matches your table's name
 
-<img src="https://github.com/leighton-digital/cloud-blocks/blob/main/images/leighton-logo.svg" width="200" />
+<img src="https://raw.githubusercontent.com/leighton-digital/cloud-blocks/blob/main/images/leighton-logo.svg" width="200" />

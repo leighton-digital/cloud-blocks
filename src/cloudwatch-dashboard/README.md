@@ -343,4 +343,4 @@ const dashboard = new CloudWatchDashboard(this, 'RichDashboard', {
 * **"Performance issues"** → Reduce widget count or optimize metric queries for faster loading
 * **"Access denied errors"** → Verify CloudWatch dashboard permissions in IAM policies
 
-<img src="https://github.com/leighton-digital/cloud-blocks/blob/main/images/leighton-logo.svg" width="200" />
+<img src="https://raw.githubusercontent.com/leighton-digital/cloud-blocks/blob/main/images/leighton-logo.svg" width="200" />

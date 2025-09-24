@@ -1,10 +1,11 @@
+<img width="50px" height="50px" align="right" alt="Cloud Blocks logo" src="https://raw.githubusercontent.com/leighton-digital/cloud-blocks/HEAD/images/cloud-blocks.png?sanitize=true" title="Leighton Cloud Blocks"/>
+
 # Cloud Blocks
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/leighton-digital/cloud-blocks/blob/main/LICENSE)
 ![Maintained](https://img.shields.io/maintenance/yes/2025)
-[![ci](https://github.com/leighton-digital/cloud-blocks/actions/workflows/ci.yml/badge.svg)](https://github.com/leighton-digital/cloud-blocks/actions/workflows/ci.yml)
-[![release](https://github.com/leighton-digital/cloud-blocks/actions/workflows/release.yml/badge.svg)](https://github.com/leighton-digital/cloud-blocks/actions/workflows/release.yml)
-![Code style: Biome](https://img.shields.io/badge/code%20style-biome-60A5FA?logo=biome)
+[![CI](https://github.com/leighton-digital/cloud-blocks/actions/workflows/main.yaml/badge.svg)](https://github.com/leighton-digital/cloud-blocks/actions/workflows/main.yaml)
+[![Release](https://github.com/leighton-digital/cloud-blocks/actions/workflows/release-publication.yaml/badge.svg)](https://github.com/leighton-digital/cloud-blocks/actions/workflows/release-publication.yaml)![Code style: Biome](https://img.shields.io/badge/code%20style-biome-60A5FA?logo=biome)
 
 **Cloud Blocks** is an open-source collection of **AWS CDK constructs** designed to help teams build secure, reusable, and production-ready cloud infrastructure faster.
 
@@ -24,7 +25,7 @@
 Install the `@leighton-digital/cloud-blocks` npm package in the project:
 
 ```bash
-npm install @leighton-digital/cloud-blocks
+pnpm install @leighton-digital/cloud-blocks
 ```
 
 Use in your CDK app:
@@ -55,31 +56,39 @@ Clone the repo and install dependencies:
 ```bash
 git clone https://github.com/leighton-digital/cloud-blocks.git
 cd cloud-blocks
-npm install
+pnpm install
 ```
+
+**Set up development environment:**
+
+```bash
+pnpm run dev:setup
+```
+
+> This installs **Lefthook** git hooks for automated formatting, linting, and pre-commit checks.
 
 ### Common Commands
 
 * **Build all packages**
 
   ```bash
-  npm run build
+  pnpm run build
   ```
 * **Run tests**
 
   ```bash
-  npm test
+  pnpm test
   ```
 * **Lint & format (Biome)**
 
   ```bash
-  npm run lint
-  npm run format:check
+  pnpm run lint
+  pnpm run format:check
   ```
 * **Type-check**
 
   ```bash
-  npm run typecheck
+  pnpm run typecheck
   ```
 
 * **Test CDK synthesis**
@@ -89,7 +98,7 @@ npm install
   pnpx cdk synth --all
   ```
 
-> **Lefthook** runs local git hooks to format/lint staged files and run checks before push.
+> **Lefthook** (installed via `pnpm run dev:setup`) runs local git hooks to format/lint staged files and run checks before push.
 
 ---
 
@@ -106,14 +115,20 @@ This project includes a comprehensive testing approach to ensure all CDK constru
 
 **Automated Synthesis Testing**
 - GitHub Actions automatically runs `cdk synth --all` on the test project
+- Tests against multiple CDK versions to ensure compatibility
 - Catches compilation errors, configuration issues, and CDK-specific problems
 - Ensures constructs generate valid CloudFormation templates
 - Runs on every pull request to prevent broken constructs from being merged
 
+**CDK Version Compatibility**
+- Best endeavours are made to ensure compatibility with CDK versions up to 6 months old
+- Automated testing validates constructs against both current and previous CDK versions
+- This ensures existing projects can upgrade Cloud Blocks without being forced to update CDK immediately
+
 **Local Testing**
 ```bash
 # Build the constructs
-npm run build
+pnpm run build
 
 # Test synthesis locally
 cd tests/test-project
@@ -150,6 +165,25 @@ This approach ensures that:
 
 ---
 
+## Creating New Constructs
+
+This project includes a **Plop generator** to create new CDK constructs with consistent structure and boilerplate:
+
+```bash
+pnpm generate construct
+```
+
+The generator creates:
+- Complete directory structure following project conventions
+- TypeScript construct class with props interface
+- Comprehensive Jest tests with CDK Nag compliance
+- Documentation (README.md) with examples
+- Automatic export updates
+
+See [Plop Generator Documentation](./docs/PLOP_GENERATOR.md) for detailed usage instructions.
+
+---
+
 ## Contributing
 
 We welcome contributions from the community! 🎉
@@ -165,7 +199,7 @@ We welcome contributions from the community! 🎉
 2. Make changes, add tests, run checks.
 3. Open a PR.
 
-**Lefthook** ensures format/lint fixes are applied pre-commit and runs checks pre-push.
+**Lefthook** (set up via `pnpm run dev:setup`) ensures format/lint fixes are applied pre-commit and runs checks pre-push.
 
 ---
 
@@ -187,4 +221,4 @@ MIT License — see the [LICENSE](https://github.com/leighton-digital/cloud-bloc
 
 ---
 
-<img src="https://github.com/leighton-digital/cloud-blocks/blob/274740c71af807962013c4fde743a8e08abb85d6/images/leighton-logo.svg" width="200" alt="Leighton Digital logo" />
+<img src="https://raw.githubusercontent.com/leighton-digital/cloud-blocks/blob/main/images/leighton-logo.svg" width="200" alt="Leighton Digital logo" />

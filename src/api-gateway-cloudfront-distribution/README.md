@@ -257,4 +257,4 @@ Contributions are welcome! Please feel free to submit a pull request.
 
 ---
 
-<img src="https://github.com/leighton-digital/cloud-blocks/blob/main/images/leighton-logo.svg" width="200" />
+<img src="https://raw.githubusercontent.com/leighton-digital/cloud-blocks/blob/main/images/leighton-logo.svg" width="200" />

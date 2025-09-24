@@ -2,7 +2,7 @@ name: "Release Publication"
 
 on:
   release:
-    types: [released] # Triggers when a pre-release is converted to a release
+    types: [released]
 
 permissions:
   id-token: write

@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/leighton-digital/cloud-blocks/compare/v1.1.0...v1.1.1) (2025-09-24)
+
+
+### Bug Fixes
+
+* fixed links in documentation ([de28327](https://github.com/leighton-digital/cloud-blocks/commit/de28327fee11173b381fdaef47a05898fe71925c))
+
 # [1.1.0](https://github.com/leighton-digital/cloud-blocks/compare/v1.0.0...v1.1.0) (2025-09-24)
 
 

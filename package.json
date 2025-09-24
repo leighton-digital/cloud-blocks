@@ -52,8 +52,7 @@
     "docs:serve": "pnpm --prefix docs-site run serve",
     "dev:setup": "pnpx lefthook install",
     "prepack": "npm run build",
-    "prepublishOnly": "npm test",
-    "preinstall": "npx only-allow pnpm"
+    "prepublishOnly": "npm test"
   },
   "type": "commonjs",
   "packageManager": "pnpm@10.15.0",

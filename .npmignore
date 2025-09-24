@@ -4,6 +4,7 @@ node_modules/
 # Development tools
 .nvmrc
 biome.json
+.npmrc
 
 # Build configuration
 tsconfig.json

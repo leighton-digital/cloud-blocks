@@ -28,7 +28,8 @@
     "url": "https://github.com/leighton-digital/cloud-blocksp/issues"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=22.11",
+    "pnpm": ">=10.15.0"
   },
   "publishConfig": {
     "tag": "latest",

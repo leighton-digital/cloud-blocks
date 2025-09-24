@@ -1,0 +1,41 @@
+name: Build
+
+on:
+  workflow_call:
+    outputs:
+      dist-cache-key:
+        description: 'Cache key for the dist directory'
+        value: ${{ jobs.build-package.outputs.dist-cache-key }}
+
+jobs:
+  build-package:
+    name: 🏗️ Build Package
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      dist-cache-key: dist-${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node-pnpm
+
+      - name: 🏗️ Build package
+        run: pnpm run build
+
+      - name: 💾 Cache dist directory
+        uses: actions/cache/save@v4
+        with:
+          path: dist
+          key: dist-${{ github.sha }}
+
+  build-docs:
+    name: 📖 Build Documentation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node-pnpm
+      - name: 📖 Build documentation
+        run: |
+            pnpm docs:ref
+            pnpm docs:post
+            pnpm docs:build

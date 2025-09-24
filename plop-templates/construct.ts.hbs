@@ -1,0 +1,61 @@
+import { Construct } from 'constructs';
+
+/**
+ * Properties for the {{name}} construct.
+ */
+export interface {{name}}Props {
+  /**
+   * Example property - replace with actual properties
+   * @example 'my-example-value'
+   */
+  readonly exampleProperty?: string;
+
+  /**
+   * Required property - replace with actual required properties
+   */
+  readonly requiredProperty: string;
+}
+
+/**
+ * {{description}}
+ *
+ * @example
+ * ```ts
+ * const {{camelCase name}} = new {{name}}(this, '{{name}}', {
+ *   requiredProperty: 'example-value',
+ *   exampleProperty: 'optional-value'
+ * });
+ * ```
+ */
+export class {{name}} extends Construct {
+  /**
+   * Example public property - replace with actual properties
+   */
+  public readonly exampleOutput: string;
+
+  constructor(scope: Construct, id: string, props: {{name}}Props) {
+    super(scope, id);
+
+    // Validate props
+    if (!props.requiredProperty) {
+      throw new Error('requiredProperty is required');
+    }
+
+    // Initialize the construct
+    this.exampleOutput = props.exampleProperty || 'default-value';
+
+    // Add your construct implementation here
+    // Example: Create AWS resources using CDK constructs
+
+    // Apply cdk-nag suppressions if needed
+    // NagSuppressions.addResourceSuppressions(
+    //   resource,
+    //   [
+    //     {
+    //       id: 'AwsSolutions-XXXX',
+    //       reason: 'Explanation for suppression'
+    //     }
+    //   ]
+    // );
+  }
+}

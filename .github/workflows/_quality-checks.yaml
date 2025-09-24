@@ -1,0 +1,62 @@
+name: Quality Checks
+
+on:
+  workflow_call:
+
+jobs:
+
+  linting:
+    uses: ./.github/workflows/_node_job.yaml
+    with:
+      name: 🧹  Linting
+      run: pnpm lint
+
+  typeCheck:
+    uses: ./.github/workflows/_node_job.yaml
+    with:
+      name: 🔍  Type Check
+      run: pnpm typecheck
+
+  unitTest:
+    uses: ./.github/workflows/_node_job.yaml
+    with:
+      name: 🧪  Unit Test
+      run: pnpm test
+      timeout-minutes: 15
+
+  cdkSynth:
+    name: ☁️  CDK Synth (${{ matrix.cdk-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        include:
+          - cdk-version: "2.1000.0"
+            cdk-lib-version: "2.182.0"
+            constructs-version: "10.0.0"
+            cdk-monitoring-constructs-version: "9.3.0"
+            cdk-nag-version: "2.35.62"
+          - cdk-version: "latest"
+            cdk-lib-version: "latest"
+            constructs-version: "latest"
+            cdk-monitoring-constructs-version: "latest"
+            cdk-nag-version: "latest"
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node-pnpm
+      - name: Install compatible aws-cdk-lib version
+        run: pnpm add -D aws-cdk-lib@${{ matrix.cdk-lib-version }}
+        working-directory: tests/test-project
+      - name: Install compatible constructs version
+        run: pnpm add -D constructs@${{ matrix.constructs-version }}
+        working-directory: tests/test-project
+      - name: Install compatible cdk-monitoring-constructs version
+        run: pnpm add -D cdk-monitoring-constructs@${{ matrix.cdk-monitoring-constructs-version }}
+        working-directory: tests/test-project
+      - name: Install compatible cdk-nag version
+        run: pnpm add -D cdk-nag@${{ matrix.cdk-nag-version }}
+        working-directory: tests/test-project
+      - run: pnpx cdk@${{ matrix.cdk-version }} synth --all
+        working-directory: tests/test-project
+

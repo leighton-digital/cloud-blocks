@@ -1,0 +1,58 @@
+name: Publish
+
+on:
+  workflow_call:
+    inputs:
+      dry-run:
+        type: boolean
+        required: false
+        default: false
+        description: 'Run in dry-run mode (no actual publishing)'
+      dist-cache-key:
+        type: string
+        required: true
+        description: 'Cache key for the dist directory'
+
+permissions:
+  id-token: write
+  contents: write
+  pages: write
+
+jobs:
+  publish:
+    name: 🚀 Publish Package
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node-pnpm
+
+      - name: 💾 Restore dist directory
+        uses: actions/cache/restore@v4
+        with:
+          path: dist
+          key: ${{ inputs.dist-cache-key }}
+          fail-on-cache-miss: true
+
+      - name: 🔧 Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: 🚀 Semantic Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ "${{ inputs.dry-run }}" = "true" ]; then
+            echo "🔍 Running semantic-release in dry-run mode"
+            npx semantic-release --dry-run
+          else
+            echo "🚀 Running semantic-release"
+            npx semantic-release
+          fi
+
+      - name:  Deploy Documentation
+        if: ${{ !inputs.dry-run }}
+        uses: actions/deploy-pages@v4
+        id: deployment

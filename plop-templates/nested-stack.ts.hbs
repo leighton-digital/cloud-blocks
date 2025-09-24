@@ -1,0 +1,31 @@
+import * as cdk from 'aws-cdk-lib';
+import type { Construct } from 'constructs';
+import { {{name}} } from '../../../src/{{kebabCase name}}';
+
+export class {{name}}NestedStack extends cdk.NestedStack {
+  public readonly {{camelCase name}}: {{name}};
+
+  constructor(scope: Construct, id: string, props?: cdk.NestedStackProps) {
+    super(scope, id, props);
+
+    // Example configuration - customize based on your construct's requirements
+    // TODO: Replace these with actual configuration values for your construct
+    const exampleConfig = {
+      requiredProperty: 'example-value',
+      // Add other properties as needed
+    };
+
+    // Create the {{titleCase name}}
+    this.{{camelCase name}} = new {{name}}(this, '{{name}}', {
+      requiredProperty: exampleConfig.requiredProperty,
+      // TODO: Add other properties based on your construct's interface
+      // exampleProperty: 'optional-value',
+    });
+
+    // TODO: Add any additional resources or configuration specific to testing
+    // For example:
+    // - Mock external dependencies
+    // - Create test data or resources
+    // - Configure test-specific settings
+  }
+}

@@ -1,0 +1,27 @@
+name: "Main"
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: write
+  pages: write
+
+jobs:
+
+  quality-checks:
+    uses: ./.github/workflows/_quality-checks.yaml
+
+  build:
+    needs: quality-checks
+    uses: ./.github/workflows/_build.yaml
+
+  pre-release:
+    needs: [quality-checks, build]
+    uses: ./.github/workflows/_pre-release.yaml
+    with:
+      dist-cache-key: ${{ needs.build.outputs.dist-cache-key }}
+    secrets: inherit

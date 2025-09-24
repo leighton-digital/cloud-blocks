@@ -1,0 +1,26 @@
+lefthook: ./node_modules/.bin/lefthook
+
+pre-commit:
+  parallel: true
+  commands:
+    biome:
+      glob: "*.{ts,tsx,js,jsx,json,md,css,scss}"
+      run: pnpm biome check --write --no-errors-on-unmatched {staged_files}
+
+    typecheck:
+      run: pnpm typecheck
+
+pre-push:
+  parallel: false
+  commands:
+    tests:
+      run: pnpm test
+    build:
+      run: pnpm build
+
+commit-msg:
+  commands:
+    non-empty:
+      run: test -s {1} || (echo "✖ Commit message is empty" && exit 1)
+    commitlint:
+      run: pnpm commitlint --edit {1}

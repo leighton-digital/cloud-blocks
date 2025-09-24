@@ -1,0 +1,42 @@
+{
+  // ---- Editor basics ----
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.encoding": "utf8",
+
+  // ---- Formatting & linting (Biome does both) ----
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.removeUnusedImports": "always",
+    "source.organizeImports.biome": "always"
+  },
+  "editor.defaultFormatter": "biomejs.biome", // use Biome extension
+
+  // ---- Tabs & indentation (match .editorconfig) ----
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+
+  // ---- TypeScript ----
+  "typescript.tsdk": "node_modules/typescript/lib", // always use local TS
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.quoteStyle": "single",
+
+  // ---- Testing (if you use Vitest) ----
+  "vitest.enable": true,
+  "testing.automaticallyOpenPeekView": "never",
+
+  // ---- Git / Source Control ----
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
+}

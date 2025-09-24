@@ -1,0 +1,117 @@
+import * as cdk from 'aws-cdk-lib';
+import { Annotations, Match, Template } from 'aws-cdk-lib/assertions';
+import { AwsSolutionsChecks, NagSuppressions } from 'cdk-nag';
+import { {{name}}, type {{name}}Props } from './{{kebabCase name}}';
+
+describe('{{name}}', () => {
+  let stack: cdk.Stack;
+  let defaultConfig: {{name}}Props;
+  let {{camelCase name}}: {{name}};
+
+  beforeEach(() => {
+    stack = new cdk.Stack();
+
+    defaultConfig = {
+      requiredProperty: 'test-value',
+      exampleProperty: 'example-value'
+    };
+
+    {{camelCase name}} = new {{name}}(stack, 'Test{{name}}', defaultConfig);
+  });
+
+  describe('Basic functionality', () => {
+    it('should create the construct with required properties', () => {
+      expect({{camelCase name}}).toBeDefined();
+      expect({{camelCase name}}.exampleOutput).toBe('example-value');
+    });
+
+    it('should use default values when optional properties are not provided', () => {
+      const minimal{{name}} = new {{name}}(stack, 'Minimal{{name}}', {
+        requiredProperty: 'test-value'
+      });
+
+      expect(minimal{{name}}.exampleOutput).toBe('default-value');
+    });
+
+    it('should throw error when required properties are missing', () => {
+      expect(() => {
+        new {{name}}(stack, 'Invalid{{name}}', {
+          requiredProperty: ''
+        });
+      }).toThrow('requiredProperty is required');
+    });
+  });
+
+  describe('CloudFormation template', () => {
+    it('should create expected resources', () => {
+      const template = Template.fromStack(stack);
+
+      // Add specific resource assertions here
+      // Example:
+      // template.hasResourceProperties('AWS::S3::Bucket', {
+      //   BucketName: Match.anyValue()
+      // });
+    });
+
+    it('should have correct resource count', () => {
+      const template = Template.fromStack(stack);
+
+      // Add resource count assertions here
+      // Example:
+      // template.resourceCountIs('AWS::S3::Bucket', 1);
+    });
+  });
+
+  describe('CDK Nag compliance', () => {
+    let nagApp: cdk.App;
+    let nagStack: cdk.Stack;
+
+    beforeEach(() => {
+      nagApp = new cdk.App();
+      nagStack = new cdk.Stack(nagApp, 'TestStack');
+
+      new {{name}}(nagStack, 'Nag{{name}}', defaultConfig);
+
+      // Apply cdk-nag checks
+      cdk.Aspects.of(nagApp).add(new AwsSolutionsChecks({ verbose: true }));
+    });
+
+    afterEach(() => {
+      // Clean up any suppressions for next test
+      NagSuppressions.removeResourceSuppressions(nagStack, true);
+    });
+
+    it('should pass cdk-nag checks', () => {
+      const warnings = Annotations.fromStack(nagStack).findWarning(
+        '*',
+        Match.stringLikeRegexp('AwsSolutions-.*')
+      );
+
+      const errors = Annotations.fromStack(nagStack).findError(
+        '*',
+        Match.stringLikeRegexp('AwsSolutions-.*')
+      );
+
+      // Log any violations for debugging
+      if (warnings.length > 0) {
+        console.warn('CDK Nag Warnings:', warnings);
+      }
+      if (errors.length > 0) {
+        console.error('CDK Nag Errors:', errors);
+      }
+
+      // Expect no violations (or only suppressed ones)
+      expect(errors).toHaveLength(0);
+    });
+  });
+
+  describe('Edge cases', () => {
+    it('should handle empty strings appropriately', () => {
+      // Add edge case tests here
+    });
+
+    it('should handle special characters in properties', () => {
+      // Add edge case tests here
+    });
+  });
+});

@@ -1,0 +1,95 @@
+# {{titleCase name}}
+
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/leighton-digital/cloud-blocks/blob/main/LICENSE)
+![Maintained](https://img.shields.io/maintenance/yes/2025)
+
+{{description}}
+
+---
+
+## Features
+
+* **Feature 1**: Description of main feature
+* **Feature 2**: Description of secondary feature
+* **Feature 3**: Description of additional feature
+
+---
+
+## Install
+
+```bash
+npm i aws-cdk-lib constructs cdk-nag
+# For tests
+npm i -D jest ts-jest @types/jest
+```
+---
+
+## Usage
+
+### Basic Example
+
+```ts
+import { Stack, StackProps } from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+import { {{name}} } from '@leighton-digital/cloud-blocks';
+
+export class MyStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
+    super(scope, id, props);
+
+    // Create the {{titleCase name}}
+    const {{camelCase name}} = new {{name}}(this, '{{name}}', {
+      // Add your configuration here
+    });
+  }
+}
+```
+
+### Advanced Configuration
+
+```ts
+// Add more advanced examples here
+```
+
+---
+
+## API Reference
+
+### {{name}}
+
+The main construct class that creates the {{titleCase name}}.
+
+#### Properties
+
+* `{{camelCase name}}` - The main {{titleCase name}} construct
+
+#### Methods
+
+* `method1()` - Description of method 1
+* `method2()` - Description of method 2
+
+---
+
+## Development
+
+### Testing
+
+Run the unit tests:
+
+```bash
+npm test
+```
+
+### Building
+
+Build the TypeScript:
+
+```bash
+npm run build
+```
+
+---
+
+## Contributing
+
+Please read [CONTRIBUTING.md](../../CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.

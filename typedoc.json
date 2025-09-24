@@ -1,0 +1,20 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "plugin": ["typedoc-plugin-markdown"],
+  "entryPoints": ["src/*"],
+  "entryPointStrategy": "expand",
+  "exclude": ["./docs-site", "./dist", "**/index.ts"],
+  "tsconfig": "tsconfig.json",
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "excludeProtected": true,
+  "readme": "./README.md",
+  "categorizeByGroup": true,
+  "cleanOutputDir": true,
+  "out": "docs/reference/01-Constructs",
+  "entryFileName": "index",
+  "mergeReadme": false,
+  "hidePageHeader": true,
+  "hideBreadcrumbs": true,
+  "hidePageTitle": true
+}

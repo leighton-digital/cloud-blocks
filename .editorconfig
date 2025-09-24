@@ -1,0 +1,40 @@
+# .editorconfig
+# Top-most EditorConfig file
+root = true
+
+# Default settings for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# Markdown (don’t strip trailing spaces, needed for line breaks)
+[*.md]
+trim_trailing_whitespace = false
+
+# Makefiles (require tabs)
+[Makefile]
+indent_style = tab
+
+# JSON / YAML / TOML / config files
+[*.{json,yml,yaml,toml}]
+indent_size = 2
+
+# TypeScript, JavaScript
+[*.{ts,tsx,js,jsx,mjs,cjs}]
+indent_size = 2
+
+# Package manifests
+[package.json]
+indent_size = 2
+
+# Shell scripts
+[*.sh]
+indent_size = 2
+
+# Markdown tables look better with 4 spaces
+[*.md]
+indent_size = 2

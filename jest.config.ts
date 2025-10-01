@@ -1,5 +1,4 @@
 export default {
-  preset: 'ts-jest',
   silent: false,
   testEnvironment: 'node',
   testMatch: ['**/*.test.ts'],
@@ -8,11 +7,6 @@ export default {
   coveragePathIgnorePatterns: ['/node_modules/', '/dist/'],
   collectCoverageFrom: ['src/**/*.ts', '!src/**/*.test.ts'],
   transform: {
-    '^.+\\.ts$': [
-      'ts-jest',
-      {
-        tsconfig: 'tsconfig.json',
-      },
-    ],
+    '^.+\\.ts$': ['@swc/jest'],
   },
 };

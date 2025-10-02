@@ -46,7 +46,7 @@
     "commit": "cz",
     "build": "rm -f tsconfig.tsbuildinfo && rm -rf ./dist && tsc -p tsconfig.json",
     "test": "jest",
-    "docs:ref": "typedoc",
+    "docs:ref": "rm -rf ./docs/reference && typedoc",
     "docs:post": "node scripts/configure-typedoc.mjs",
     "docs:build": "pnpm --prefix docs-site run build",
     "docs:serve": "pnpm --prefix docs-site run serve",

@@ -11,7 +11,7 @@
   "readme": "./README.md",
   "categorizeByGroup": true,
   "cleanOutputDir": true,
-  "out": "docs/reference/01-Constructs",
+  "out": "docs/reference/01-Library Reference",
   "entryFileName": "index",
   "mergeReadme": false,
   "hidePageHeader": true,

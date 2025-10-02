@@ -1,7 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import * as apigw from 'aws-cdk-lib/aws-apigateway';
 import type { Construct } from 'constructs';
-import { RestApi } from '../../../src/rest-api';
+import { RestApi } from '../../../src/constructs/rest-api';
 
 export class RestApiNestedStack extends cdk.NestedStack {
   public readonly minimalApi: RestApi;

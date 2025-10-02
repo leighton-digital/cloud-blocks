@@ -1,7 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import * as cloudwatch from 'aws-cdk-lib/aws-cloudwatch';
 import type { Construct } from 'constructs';
-import { CloudWatchDashboard } from '../../../src/cloudwatch-dashboard';
+import { CloudWatchDashboard } from '../../../src/constructs/cloudwatch-dashboard';
 
 export class CloudWatchDashboardNestedStack extends cdk.NestedStack {
   public readonly dashboard: CloudWatchDashboard;

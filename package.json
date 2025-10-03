@@ -85,7 +85,7 @@
     "@semantic-release/release-notes-generator": "^14.1.0",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
-    "@types/node": "^20.11.16",
+    "@types/node": "^24.6.1",
     "commit-and-tag-version": "^12.5.1",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.0.1",

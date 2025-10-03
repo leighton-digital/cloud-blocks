@@ -68,7 +68,7 @@ describe('ApiCloudFrontDistribution', () => {
     });
 
     template.hasResourceProperties('AWS::S3::Bucket', {
-      BucketName: 'dev-oms-distribution-access-logs',
+      BucketName: 'dev-oms-distribution-bucket-access-logs',
     });
   });
 

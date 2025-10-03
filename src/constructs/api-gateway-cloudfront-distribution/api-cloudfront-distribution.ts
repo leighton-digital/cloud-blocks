@@ -12,6 +12,7 @@ import type * as monitoring from 'cdk-monitoring-constructs';
 import type { CloudFrontDistributionMonitoringOptions } from 'cdk-monitoring-constructs';
 import { NagSuppressions } from 'cdk-nag';
 import { Construct } from 'constructs';
+import { generateS3BucketName } from '../../utils';
 
 /**
  * Props for an API Gateway–fronted CloudFront distribution.
@@ -335,7 +336,11 @@ export class ApiCloudFrontDistribution extends Construct {
         autoDeleteObjects: true,
         objectOwnership: s3.ObjectOwnership.OBJECT_WRITER,
         removalPolicy: RemovalPolicy.DESTROY,
-        bucketName: `${props.stageName}-oms-distribution-access-logs`,
+        bucketName: generateS3BucketName(
+          props.stageName,
+          'oms-distribution',
+          'access-logs',
+        )
       },
     );
 

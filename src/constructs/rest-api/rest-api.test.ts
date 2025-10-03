@@ -46,7 +46,7 @@ describe('RestApi', () => {
       const template = Template.fromStack(stack);
 
       template.hasResourceProperties('AWS::ApiGateway::RestApi', {
-        Name: 'TestApi-api-test',
+        Name: 'test-testapi-api',
         Description: 'Test API',
         EndpointConfiguration: {
           Types: ['REGIONAL'],
@@ -408,7 +408,7 @@ describe('RestApi', () => {
 
       // Verify the policy was applied
       template.hasResourceProperties('AWS::ApiGateway::RestApi', {
-        Name: 'TestApi-api-test',
+        Name: 'test-testapi-api',
         Description: 'Test API',
         MinimumCompressionSize: 1024,
         Policy: Match.objectLike({
@@ -438,7 +438,7 @@ describe('RestApi', () => {
       // We can't directly test retainDeployments in the template,
       // but we can verify the API was created successfully
       expect(restApi.api).toBeDefined();
-      expect(restApi.api.restApiName).toBe('TestApi-api-test');
+      expect(restApi.api.restApiName).toBe('test-testapi-api');
     });
 
     it('allows overriding default properties', () => {
@@ -490,7 +490,7 @@ describe('RestApi', () => {
       const template = Template.fromStack(stack);
 
       template.hasResourceProperties('AWS::ApiGateway::RestApi', {
-        Name: 'UserManagement-api-production',
+        Name: 'production-usermanagement-api',
         Description: 'User Management Service',
       });
     });
@@ -596,7 +596,7 @@ describe('RestApi', () => {
       const template = Template.fromStack(stack);
 
       template.hasResourceProperties('AWS::ApiGateway::RestApi', {
-        Name: 'TestApi-api-ephemeral-pr-123',
+        Name: 'ephemeral-pr-123-testapi-api',
         Description: 'PR Environment API',
       });
     });
@@ -707,7 +707,7 @@ describe('RestApi', () => {
       });
 
       expect(restApi.api).toBeDefined();
-      expect(restApi.api.restApiName).toBe('MinimalApi-api-minimal');
+      expect(restApi.api.restApiName).toBe('minimal-minimalapi-api');
     });
 
     it('handles different stage names correctly', () => {
@@ -726,7 +726,7 @@ describe('RestApi', () => {
           deploy: true,
         });
 
-        expect(api.api.restApiName).toBe(`TestApi${index}-api-${stageName}`);
+        expect(api.api.restApiName).toBe(`${stageName}-testapi${index}-api`);
       });
     });
   });

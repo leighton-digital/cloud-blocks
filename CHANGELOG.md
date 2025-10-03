@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/leighton-digital/cloud-blocks/compare/v1.1.2...v1.2.0) (2025-10-03)
+
+
+### Features
+
+* migrated aspects to the poject and updated document generation ([6d6dc90](https://github.com/leighton-digital/cloud-blocks/commit/6d6dc900f6d6114406fc541ed3e2936b588a968d))
+
 ## [1.1.2](https://github.com/leighton-digital/cloud-blocks/compare/v1.1.1...v1.1.2) (2025-09-24)
 
 

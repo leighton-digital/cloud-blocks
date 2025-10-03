@@ -81,7 +81,7 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'reference', // Must match the id exported in sidebars.ts
           position: 'left',
-          label: 'Construct Reference',
+          label: 'Library Reference',
         },
         {
           href: 'https://github.com/Leighton/cloud-blocks',
@@ -95,7 +95,7 @@ const config: Config = {
       links: [
         {
           title: 'Docs',
-          items: [{ label: 'Construct Reference', to: '/' }],
+          items: [{ label: 'Library Reference', to: '/' }],
         },
         {
           title: 'Community',
@@ -119,7 +119,6 @@ const config: Config = {
 
         // Options
         {
-          entryPoints: ['../constructs'],
           docsPath: '../docs/reference',
           tsconfig: '../tsconfig.json',
         },

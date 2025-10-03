@@ -1,7 +1,8 @@
 import type * as cdk from 'aws-cdk-lib';
 import * as cloudwatch from 'aws-cdk-lib/aws-cloudwatch';
 import type { Construct } from 'constructs';
-import { CustomStack } from '../../../src/custom-stack';
+import { addTagsToStack } from '../../../src/aspects/add-tags-to-stack';
+import { CustomStack } from '../../../src/constructs/custom-stack';
 import { ApiDistributionNestedStack } from './api-distribution-nested-stack';
 import { CloudWatchDashboardNestedStack } from './cloudwatch-dashboard-nested-stack';
 import { IdempotencyTableNestedStack } from './idempotency-table-nested-stack';
@@ -77,6 +78,13 @@ This dashboard provides comprehensive monitoring for the test project, including
 
     // Add monitoring widgets to the centralized dashboard
     this.setupCentralizedMonitoring();
+
+    // Apply additional test-specific tags to demonstrate tag utilities
+    addTagsToStack(this, {
+      StackType: 'test-project',
+      Version: '1.0.0',
+      CostCenter: 'engineering',
+    });
   }
 
   /**

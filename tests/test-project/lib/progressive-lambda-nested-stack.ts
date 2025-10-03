@@ -3,7 +3,7 @@ import * as codeDeploy from 'aws-cdk-lib/aws-codedeploy';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as sns from 'aws-cdk-lib/aws-sns';
 import type { Construct } from 'constructs';
-import { ProgressiveLambda } from '../../../src/progressive-lambda';
+import { ProgressiveLambda } from '../../../src/constructs/progressive-lambda';
 
 export class ProgressiveLambdaNestedStack extends cdk.NestedStack {
   public readonly progressiveLambda: ProgressiveLambda;

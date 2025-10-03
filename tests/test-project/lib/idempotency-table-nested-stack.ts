@@ -1,6 +1,6 @@
 import * as cdk from 'aws-cdk-lib';
 import type { Construct } from 'constructs';
-import { IdempotencyTable } from '../../../src/idempotency-table';
+import { IdempotencyTable } from '../../../src/constructs/idempotency-table';
 
 export class IdempotencyTableNestedStack extends cdk.NestedStack {
   public readonly idempotencyTable: IdempotencyTable;

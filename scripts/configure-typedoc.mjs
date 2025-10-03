@@ -9,10 +9,10 @@ import { readFileSync, writeFileSync, existsSync } from "fs";
 
 const rootDir = path.resolve(process.cwd());
 const docsRefDir = path.join(rootDir, 'docs', 'reference');
-const packagesDir = path.join(docsRefDir, '01-Constructs');
-const indexMdPath = path.join(docsRefDir, '01-Constructs', 'index.md');
+const packagesDir = path.join(docsRefDir, '01-Library Reference');
+const indexMdPath = path.join(docsRefDir, '01-Library Reference', 'index.md');
 const packagesMdPath = path.join(packagesDir, 'modules.md');
-const packagesMdRenamedPath = path.join(packagesDir, '01-Constructs.md');
+const packagesMdRenamedPath = path.join(packagesDir, '01-Library Reference.md');
 const pagesDir = path.join(rootDir, 'docs-site', 'src', 'pages');
 const readmeSrcPath = path.join(rootDir, 'README.md');
 const readmeDestPath = path.join(pagesDir, 'index.md');
@@ -36,40 +36,55 @@ const isADirectory = (file) => {
 }
 
 /**
- * Organise the TypeDoc output by moving 'classes' and 'interfaces' directories
- * up one level and removing any empty directories left behind.
+ * Remove duplicate nested directories by moving contents up one level
+ * when parent and child directories have the same name.
+ * Recursively processes all subdirectories.
  */
-async function organiseTypeDoc() {
-  const baseDir = path.join(docsRefDir, '01-Constructs');
-  const entries = await fs.readdir(baseDir, { withFileTypes: true });
-  for (const e of entries) {
-    if (isADirectory(e)) {
-      const subEntries = await fs.readdir(path.join(baseDir, e.name), { withFileTypes: true });
-      for (const se of subEntries) {
-        if (isADirectory(se)) {
-          const subSubEntries = await fs.readdir(path.join(baseDir, e.name, se.name), { withFileTypes: true });
-          let hasClassesOrInterfaces = false;
-          for (const sse of subSubEntries) {
-            if (isADirectory(sse) && (sse.name === 'classes' || sse.name === 'interfaces')) {
-              const dirName = path.join(baseDir, e.name, se.name, sse.name);
-              await fs.rename(dirName, path.join(baseDir, e.name, sse.name));
-              hasClassesOrInterfaces = true;
+async function removeDuplicateNestedDirectories() {
+  const baseDir = path.join(docsRefDir, '01-Library Reference');
+
+  async function processDirectory(currentDir) {
+    const entries = await fs.readdir(currentDir, { withFileTypes: true });
+
+    for (const entry of entries) {
+      if (isADirectory(entry)) {
+        const entryPath = path.join(currentDir, entry.name);
+        const subEntries = await fs.readdir(entryPath, { withFileTypes: true });
+
+        // Check for duplicate nested directories
+        for (const subEntry of subEntries) {
+          if (isADirectory(subEntry) && subEntry.name === entry.name.replace('-gateway', '')) {
+            // Found duplicate nested directory - move all contents up one level
+            const duplicateDir = path.join(entryPath, subEntry.name);
+            const duplicateContents = await fs.readdir(duplicateDir, { withFileTypes: true });
+
+            // Move each item from the duplicate directory to its parent
+            for (const item of duplicateContents) {
+              const sourcePath = path.join(duplicateDir, item.name);
+              const destPath = path.join(entryPath, item.name);
+              await fs.rename(sourcePath, destPath);
             }
-          }
-          if (hasClassesOrInterfaces && existsSync(path.join(baseDir, e.name, se.name)) === true) {
-            fs.rmdir(path.join(baseDir, e.name, se.name));
+
+            // Remove the now-empty duplicate directory
+            await fs.rmdir(duplicateDir);
+            console.log(`Removed duplicate directory: ${duplicateDir}`);
           }
         }
+
+        // Recursively process this directory
+        await processDirectory(entryPath);
       }
     }
   }
+
+  await processDirectory(baseDir);
 }
 
 /**
- * Rename modules.md to 01-constructs.md
+ * Rename modules.md to 01-Library Reference.md
  */
 async function renameModulesMarkdown() {
-  // Rename modules.md to 01-constructs.md
+  // Rename modules.md to 01-Library Reference.md
   try {
     await fs.rename(packagesMdPath, packagesMdRenamedPath);
     console.log(`Renamed: ${packagesMdPath} → ${packagesMdRenamedPath}`);
@@ -82,11 +97,11 @@ async function renameModulesMarkdown() {
 }
 
 /**
- * Process the 01-Constructs.md file to remove any lines containing "_docs",
+ * Process the 01-Library Reference.md file to remove any lines containing "_docs",
  * fix duplicate text in links, remove index.md from paths, and update the heading.
  */
 async function processModulesMarkdown() {
-  const file = path.join(docsRefDir, '01-Constructs/01-Constructs.md');
+  const file = path.join(docsRefDir, '01-Library Reference/01-Library Reference.md');
   let content = readFileSync(file, "utf8");
 
   // Split into lines and filter out lines containing "_docs"
@@ -94,9 +109,9 @@ async function processModulesMarkdown() {
 
   // Fix duplicate text in links and remove index.md from paths
   lines = lines.map(line => {
-    // Change heading from "## Modules" to "# Constructs"
+    // Change heading from "## Modules" to "# Library Reference"
     if (line.trim() === "## Modules") {
-      return "# Constructs";
+      return "# Library Reference";
     }
 
     // Match markdown links and simplify by removing everything after the first /
@@ -162,7 +177,7 @@ async function copyMarkdownFiles() {
  * Finally, remove any empty __docs directories.
  */
 async function organiseDocMarkdownFiles() {
-  const baseDir = path.join(docsRefDir, '01-Constructs');
+  const baseDir = path.join(docsRefDir, '01-Library Reference');
   const entries = await fs.readdir(baseDir, { withFileTypes: true });
   for (const e of entries) {
     if (e.isDirectory() && e.name !== "node_modules" && e.name !== ".git") {
@@ -182,10 +197,10 @@ async function organiseDocMarkdownFiles() {
 }
 
 /**
- * Delete all index.md files in the docs/reference/01-Constructs directory and its subdirectories.
+ * Delete all index.md files in the docs/reference/01-Library Reference directory and its subdirectories.
  */
 async function deleteAllIndexMarkdownFiles() {
-  const baseDir = path.join(docsRefDir, '01-Constructs');
+  const baseDir = path.join(docsRefDir, '01-Library Reference');
 
   async function walk(dir) {
     const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -209,7 +224,7 @@ async function deleteAllIndexMarkdownFiles() {
  * Escapes curly braces that MDX interprets as JSX expressions.
  */
 async function fixMdxSyntax() {
-  const baseDir = path.join(docsRefDir, '01-Constructs');
+  const baseDir = path.join(docsRefDir, '01-Library Reference');
 
   async function processMarkdownFile(filePath) {
     try {
@@ -260,7 +275,8 @@ async function main() {
   await copyMarkdownFiles();
   await organiseDocMarkdownFiles();
   await deleteAllIndexMarkdownFiles();
-  await organiseTypeDoc();
+  // await organiseTypeDoc();
+  await removeDuplicateNestedDirectories();
   await fixMdxSyntax();
 }
 

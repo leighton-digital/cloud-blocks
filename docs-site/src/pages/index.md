@@ -9,6 +9,8 @@
 
 **Cloud Blocks** is an open-source collection of **AWS CDK constructs** designed to help teams build secure, reusable, and production-ready cloud infrastructure faster.
 
+Read more in the docs here: [Cloud Blocks Docs](https://leighton-digital.github.io/cloud-blocks/)
+
 ---
 
 ## Purpose

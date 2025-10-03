@@ -6,7 +6,7 @@ import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as route53 from 'aws-cdk-lib/aws-route53';
 import * as monitoring from 'cdk-monitoring-constructs';
 import type { Construct } from 'constructs';
-import { ApiCloudFrontDistribution } from '../../../src/api-gateway-cloudfront-distribution';
+import { ApiCloudFrontDistribution } from '../../../src/constructs/api-gateway-cloudfront-distribution';
 
 export class ApiDistributionNestedStack extends cdk.NestedStack {
   public readonly distribution: ApiCloudFrontDistribution;

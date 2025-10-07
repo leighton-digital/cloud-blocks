@@ -22,11 +22,10 @@ import { Stage } from '../../types/environments';
  */
 export function getRemovalPolicyFromStage(stage: string): RemovalPolicy {
   if (
-    stage.toLowerCase().trim() !== Stage.prod &&
-    stage.toLowerCase().trim() !== Stage.staging
+    [Stage.prod, Stage.staging].includes(stage.toLowerCase().trim() as Stage)
   ) {
-    return RemovalPolicy.DESTROY;
+    return RemovalPolicy.RETAIN;
   }
 
-  return RemovalPolicy.RETAIN;
+  return RemovalPolicy.DESTROY;
 }

@@ -336,11 +336,11 @@ export class ApiCloudFrontDistribution extends Construct {
         autoDeleteObjects: true,
         objectOwnership: s3.ObjectOwnership.OBJECT_WRITER,
         removalPolicy: RemovalPolicy.DESTROY,
-        bucketName: generateS3BucketName(
-          props.stageName,
-          'oms-distribution',
-          'access-logs',
-        )
+        bucketName: generateS3BucketName({
+          stage:props.stageName,
+          service: 'oms-distribution',
+          suffix: 'access-logs',
+      })
       },
     );
 

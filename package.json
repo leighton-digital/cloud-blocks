@@ -106,5 +106,8 @@
     "cdk-monitoring-constructs": "^9.3.0",
     "cdk-nag": "^2.35.62",
     "constructs": "^10.0.0"
+  },
+  "dependencies": {
+    "zod": "^4.1.12"
   }
 }

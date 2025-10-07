@@ -7,7 +7,7 @@ This directory contains **TypeScript type definitions** and **enums** that provi
 The types in this directory serve to:
 
 - **Ensure type safety** across all constructs, utilities, and consuming applications
-- **Standardize common patterns** like resource naming, tagging, and environment configuration
+- **Standardise common patterns** like resource naming, tagging, and environment configuration
 - **Provide consistent interfaces** for configuration objects and function parameters
 - **Enable IntelliSense support** and better developer experience in IDEs
 - **Enforce best practices** through well-defined type constraints

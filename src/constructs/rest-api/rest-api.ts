@@ -250,11 +250,11 @@ export class RestApi extends Construct {
       defaultCorsPreflightOptions: corsOptions,
       cloudWatchRole: true,
       retainDeployments: false,
-      restApiName: generateResourceName(
-        props.stageName,
-        id.toLowerCase(),
-        'api',
-      ),
+      restApiName: generateResourceName({
+        stage: props.stageName,
+        service: id.toLowerCase(),
+        resource: 'api',
+      }),
       disableExecuteApiEndpoint: true,
       deploy: true,
       ...(props.deploy !== false && {

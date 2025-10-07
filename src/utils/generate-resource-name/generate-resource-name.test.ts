@@ -3,29 +3,43 @@ import { generateResourceName } from './generate-resource-name';
 
 describe('generateResourceName', () => {
   it('should generate a valid resource name with all parts', () => {
-    const name = generateResourceName(
-      Stage.develop,
-      'update-user',
-      'queue',
-      'dlq',
-      Region.london,
-    );
+    const name = generateResourceName({
+      stage: Stage.develop,
+      service: 'update-user',
+      resource: 'queue',
+      suffix: 'dlq',
+      region: Region.london,
+    });
     expect(name).toBe('develop-update-user-queue-dlq-eu-west-2');
   });
 
   it('should generate a valid resource name without region or suffix', () => {
-    const name = generateResourceName(Stage.prod, 'get-orders', 'function');
+    const name = generateResourceName({
+      stage: Stage.prod,
+      service: 'get-orders',
+      resource: 'function',
+    });
     expect(name).toBe('prod-get-orders-function');
   });
 
   it('should generate a valid resource name without region', () => {
-    const name = generateResourceName(
-      Stage.develop,
-      'update-user',
-      'queue',
-      'dlq',
-    );
+    const name = generateResourceName({
+      stage: Stage.develop,
+      service: 'update-user',
+      resource: 'queue',
+      suffix: 'dlq',
+    });
     expect(name).toBe('develop-update-user-queue-dlq');
+  });
+
+  it('should generate a valid resource name without suffix', () => {
+    const name = generateResourceName({
+      stage: Stage.staging,
+      service: 'analytics',
+      resource: 'table',
+      region: Region.london,
+    });
+    expect(name).toBe('staging-analytics-table-eu-west-2');
   });
 
   it('should throw an error if the name exceeds the max length', () => {
@@ -33,27 +47,76 @@ describe('generateResourceName', () => {
     const longResource = 'verylongresourcetypewithmanycharacters';
 
     expect(() =>
-      generateResourceName(
-        Stage.staging,
-        longService,
-        longResource,
-        Region.london,
-      ),
+      generateResourceName({
+        stage: Stage.staging,
+        service: longService,
+        resource: longResource,
+        region: Region.london,
+      }),
     ).toThrow(/exceeds the maximum allowed length/);
   });
 
   it('should handle empty strings gracefully', () => {
-    const name = generateResourceName(Stage.develop, '', 'table', '');
+    const name = generateResourceName({
+      stage: Stage.develop,
+      service: '',
+      resource: 'table',
+      suffix: '',
+    });
     expect(name).toBe('develop-table');
   });
 
   it('should lowercase the result', () => {
-    const name = generateResourceName(
-      Stage.develop,
-      'Orders',
-      'QUEUE',
-      Region.london,
-    );
+    const name = generateResourceName({
+      stage: Stage.develop,
+      service: 'Orders',
+      resource: 'QUEUE',
+      region: Region.london,
+    });
     expect(name).toBe('develop-orders-queue-eu-west-2');
+  });
+
+  it('should handle mixed case in all parameters', () => {
+    const name = generateResourceName({
+      stage: Stage.develop,
+      service: 'User-Service',
+      resource: 'Lambda-Function',
+      suffix: 'V2',
+      region: Region.london,
+    });
+    expect(name).toBe('develop-user-service-lambda-function-v2-eu-west-2');
+  });
+
+  it('should handle undefined optional parameters', () => {
+    const name = generateResourceName({
+      stage: Stage.prod,
+      service: 'payment',
+      resource: 'bucket',
+      suffix: undefined,
+      region: undefined,
+    });
+    expect(name).toBe('prod-payment-bucket');
+  });
+
+  it('should generate name exactly at max length boundary', () => {
+    const name = generateResourceName({
+      stage: Stage.develop,
+      service: 'service12345678901234567890123456789',
+      resource: 'resource12345678901',
+    });
+    expect(name).toHaveLength(64);
+    expect(name).toBe(
+      'develop-service12345678901234567890123456789-resource12345678901',
+    );
+  });
+
+  it('should handle single character components', () => {
+    const name = generateResourceName({
+      stage: Stage.develop,
+      service: 'a',
+      resource: 'b',
+      suffix: 'c',
+    });
+    expect(name).toBe('develop-a-b-c');
   });
 });

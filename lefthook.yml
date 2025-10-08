@@ -10,6 +10,10 @@ pre-commit:
     typecheck:
       run: pnpm typecheck
 
+    spell-check:
+      glob: "*.{ts,tsx,js,jsx,json,md,yml,yaml,mjs}"
+      run: pnpm spell:check-files {staged_files}
+
 pre-push:
   parallel: false
   commands:

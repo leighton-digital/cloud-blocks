@@ -62,7 +62,9 @@ export function generateS3BucketName({
     if (error instanceof z.ZodError) {
       const errorMessages = error.issues.map((issue) => issue.message);
       const combinedMessage = errorMessages.join(' ');
-      throw new Error(`Error generating S3 bucket name "${name}": ${combinedMessage}`);
+      throw new Error(
+        `Error generating S3 bucket name "${name}": ${combinedMessage}`,
+      );
     }
     throw error;
   }

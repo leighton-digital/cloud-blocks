@@ -89,7 +89,7 @@ describe('generateS3BucketName', () => {
         region: Region.london,
       }),
     ).toThrow(
-      'Error generating S3 bucket name \"staging-/-bucket-eu-west-2\": contains invalid characters. Must contain only lowercase letters, numbers, dots, and hyphens, and start/end with alphanumeric characters.',
+      'Error generating S3 bucket name "staging-/-bucket-eu-west-2": contains invalid characters. Must contain only lowercase letters, numbers, dots, and hyphens, and start/end with alphanumeric characters.',
     );
   });
 

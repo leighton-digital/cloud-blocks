@@ -67,7 +67,18 @@ pnpm install
 pnpm run dev:setup
 ```
 
-> This installs **Lefthook** git hooks for automated formatting, linting, and pre-commit checks.
+> This installs **Lefthook** git hooks for automated formatting, linting, spell checking, and pre-commit checks.
+
+### Code Quality Tools
+
+This project uses several tools to maintain code quality and consistency:
+
+- **[Biome](https://biomejs.dev/)**: Fast linting and formatting for TypeScript/JavaScript
+- **[CSpell](https://cspell.org/)**: Spell checking configured for UK English
+- **[TypeScript](https://www.typescriptlang.org/)**: Type checking and compilation
+- **[Lefthook](https://github.com/evilmartians/lefthook)**: Git hooks for automated quality checks
+
+**Language Standards**: All documentation and comments use UK English spelling (colour, behaviour, organisation, etc.)
 
 ### Common Commands
 
@@ -87,6 +98,11 @@ pnpm run dev:setup
   pnpm run lint
   pnpm run format:check
   ```
+* **Spell check (CSpell)**
+
+  ```bash
+  pnpm spell:check
+  ```
 * **Type-check**
 
   ```bash
@@ -100,7 +116,7 @@ pnpm run dev:setup
   pnpx cdk synth --all
   ```
 
-> **Lefthook** (installed via `pnpm run dev:setup`) runs local git hooks to format/lint staged files and run checks before push.
+> **Lefthook** (installed via `pnpm run dev:setup`) runs local git hooks to format/lint staged files, check spelling (CSpell), and run type/build checks before commits and pushes.
 
 ---
 
@@ -201,7 +217,7 @@ We welcome contributions from the community! 🎉
 2. Make changes, add tests, run checks.
 3. Open a PR.
 
-**Lefthook** (set up via `pnpm run dev:setup`) ensures format/lint fixes are applied pre-commit and runs checks pre-push.
+**Lefthook** (set up via `pnpm run dev:setup`) ensures format/lint fixes are applied, spelling is checked (UK English), and type/build checks run pre-commit and pre-push.
 
 ---
 

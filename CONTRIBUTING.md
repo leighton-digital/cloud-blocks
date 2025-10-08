@@ -51,9 +51,38 @@ To test changes to this package locally in another project:
 
 - Follow TypeScript best practices
 - Use Biome for linting and formatting
+- Use UK English spelling in documentation and comments
 - Write clear commit messages
 - Add tests for new features
 - Update documentation
+
+### Spelling and Language Standards
+
+This project uses **CSpell** to enforce consistent spelling and language standards:
+
+- **UK English**: All documentation, comments, and text content should use UK English spellings (e.g., "colour", "behaviour", "organisation")
+- **Pre-commit checks**: CSpell runs automatically before commits to catch spelling errors
+- **Custom dictionary**: Technical terms, AWS services, and project-specific vocabulary are included in the custom dictionary
+
+**Common UK vs US spellings to be aware of:**
+- Use "colour" not "color"
+- Use "behaviour" not "behavior"
+- Use "organisation" not "organization"
+- Use "realise" not "realize"
+- Use "analyse" not "analyze"
+- Use "centre" not "center"
+
+**Running spelling checks manually:**
+```bash
+# Check all files
+pnpm spell:check
+
+# Check specific files
+pnpm spell:check-files path/to/file.ts
+```
+
+**Adding new technical terms:**
+If CSpell flags legitimate technical terms or project-specific vocabulary, add them to the `words` array in `cspell.json`.
 
 ## Testing Guidelines
 

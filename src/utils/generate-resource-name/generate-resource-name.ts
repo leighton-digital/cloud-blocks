@@ -52,7 +52,9 @@ export function generateResourceName({
     if (error instanceof z.ZodError) {
       const errorMessages = error.issues.map((issue) => issue.message);
       const combinedMessage = errorMessages.join(' ');
-      throw new Error(`Error generating resource name "${name}": ${combinedMessage}`);
+      throw new Error(
+        `Error generating resource name "${name}": ${combinedMessage}`,
+      );
     }
     throw error;
   }

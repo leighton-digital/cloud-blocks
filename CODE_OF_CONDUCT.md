@@ -6,7 +6,7 @@ We as members, contributors, and leaders pledge to make participation in our com
 
 ## Our Standards
 
-Examples of behavior that contributes to a positive environment for our community include:
+Examples of behaviour that contributes to a positive environment for our community include:
 
 - Using welcoming and inclusive language
 - Being respectful of differing viewpoints and experiences
@@ -14,7 +14,7 @@ Examples of behavior that contributes to a positive environment for our communit
 - Focusing on what is best for the community
 - Showing empathy towards other community members
 
-Examples of unacceptable behavior by participants include:
+Examples of unacceptable behaviour by participants include:
 
 - The use of sexualized language or imagery and unwelcome sexual attention or advances
 - Trolling, insulting/derogatory comments, and personal or political attacks
@@ -24,7 +24,7 @@ Examples of unacceptable behavior by participants include:
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement. All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The community leadership team is obligated to maintain confidentiality with regard to the reporter of an incident.
+Instances of abusive, harassing, or otherwise unacceptable behaviour may be reported to the community leaders responsible for enforcement. All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The community leadership team is obligated to maintain confidentiality with regard to the reporter of an incident.
 
 Community leaders will follow these Community Impact Guidelines in determining the consequences for any action they deem in violation of this Code of Conduct.
 

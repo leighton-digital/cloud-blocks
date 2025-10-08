@@ -5,9 +5,9 @@
 
 A collection of **AWS CDK infrastructure utilities** for **consistent resource naming and environment management**, featuring:
 
-* **Standardized resource naming** with `generateResourceName` and `generateS3BucketName`
+* **Standardised resource naming** with `generateResourceName` and `generateS3BucketName`
 * **Environment-aware policies** through `getRemovalPolicyFromStage`
-* **Stage normalization** with `getStage` for consistent environment handling
+* **Stage normalisation** with `getStage` for consistent environment handling
 * **AWS compliance** with service-specific naming constraints
 * **Type-safe resource names** with TypeScript validation
 * **Early error detection** during CDK synthesis for invalid names
@@ -16,12 +16,12 @@ A collection of **AWS CDK infrastructure utilities** for **consistent resource n
 ## Features
 
 * **Resource Naming Utilities**:
-  * `generateResourceName()` - Standardized AWS resource names up to 64 characters
+  * `generateResourceName()` - Standardised AWS resource names up to 64 characters
   * `generateS3BucketName()` - S3-compliant bucket names with strict validation
   * Consistent naming pattern: `<stage>-<service>-<resource>[-<suffix>][-<region>]`
   * Automatic length validation and character sanitization
 * **Environment Management**:
-  * `getStage()` - Normalize stage names for known and ephemeral environments
+  * `getStage()` - Normalise stage names for known and ephemeral environments
   * `getRemovalPolicyFromStage()` - Environment-appropriate resource retention policies
   * Support for `prod`, `staging`, `test`, and dynamic environments (e.g., `pr-123`)
 * **Safety**: Prevents accidental resource deletion in production environments
@@ -86,12 +86,12 @@ const table = new Table(this, 'UsersTable', {
 });
 ```
 
-### Stage Normalization
+### Stage Normalisation
 
 ```ts
 import { getStage } from '@leighton-digital/cdk-ts-core/infra';
 
-// Known stages are normalized
+// Known stages are normalised
 const prodStage = getStage('prod');        // 'prod'
 const stagingStage = getStage('staging');  // 'staging'
 const testStage = getStage('test');        // 'test'
@@ -125,30 +125,30 @@ class MyApplicationStack extends Stack {
     super(scope, id, props);
 
     const { stage, service } = props;
-    const normalizedStage = getStage(stage);
-    const removalPolicy = getRemovalPolicyFromStage(normalizedStage);
+    const normalisedStage = getStage(stage);
+    const removalPolicy = getRemovalPolicyFromStage(normalisedStage);
 
-    // DynamoDB table with standardized naming
+    // DynamoDB table with standardised naming
     const table = new Table(this, 'UsersTable', {
-      tableName: generateResourceName(normalizedStage, service, 'table'),
+      tableName: generateResourceName(normalisedStage, service, 'table'),
       partitionKey: { name: 'id', type: AttributeType.STRING },
       removalPolicy,
     });
 
     // S3 buckets with different purposes
     const assetsBucket = new Bucket(this, 'AssetsBucket', {
-      bucketName: generateS3BucketName(normalizedStage, service, 'assets'),
+      bucketName: generateS3BucketName(normalisedStage, service, 'assets'),
       removalPolicy,
     });
 
     const logsBucket = new Bucket(this, 'LogsBucket', {
-      bucketName: generateS3BucketName(normalizedStage, service, 'logs'),
+      bucketName: generateS3BucketName(normalisedStage, service, 'logs'),
       removalPolicy,
     });
 
     // Lambda function
     const apiFunction = new Function(this, 'ApiFunction', {
-      functionName: generateResourceName(normalizedStage, service, 'function', 'api'),
+      functionName: generateResourceName(normalisedStage, service, 'function', 'api'),
       runtime: Runtime.NODEJS_18_X,
       handler: 'index.handler',
       code: Code.fromAsset('lambda'),
@@ -268,7 +268,7 @@ generateS3BucketName('prod', 'backup', 'daily', 'eu-west-1')
 
 ## Environment Management
 
-### Stage Normalization
+### Stage Normalisation
 
 ```ts
 import { getStage } from '@leighton-digital/cdk-ts-core/infra';
@@ -278,7 +278,7 @@ getStage('prod')     // → 'prod'
 getStage('staging')  // → 'staging'
 getStage('test')     // → 'test'
 
-// Ephemeral environments (normalized to lowercase)
+// Ephemeral environments (normalised to lowercase)
 getStage('PR-123')        // → 'pr-123'
 getStage('FEATURE-auth')  // → 'feature-auth'
 getStage('hotfix-login')  // → 'hotfix-login'
@@ -385,7 +385,7 @@ try {
 * Names follow consistent `stage-service-resource` pattern
 
 ### Environment Management
-* **getStage**: Normalizes stage names, supports ephemeral environments
+* **getStage**: Normalises stage names, supports ephemeral environments
 * **getRemovalPolicyFromStage**: Returns `RETAIN` for prod/staging, `DESTROY` for others
 * Enables safe multi-environment deployments with appropriate resource lifecycle policies
 
@@ -408,7 +408,7 @@ try {
 * **Global uniqueness**: S3 bucket names must be globally unique across all AWS accounts
 * **Character restrictions**: S3 buckets cannot contain uppercase letters or underscores
 * **Length limits**: Function validates against AWS service limits during synthesis
-* **Stage normalization**: Unknown stages are converted to lowercase for consistency
+* **Stage normalisation**: Unknown stages are converted to lowercase for consistency
 * **Removal policies**: Production/staging resources are retained by default to prevent data loss
 * **Ephemeral environments**: Support for dynamic environments like `pr-123` enables flexible CI/CD workflows
 * **Early validation**: Naming errors occur during CDK synthesis, not deployment
@@ -419,14 +419,14 @@ try {
 * **"S3 bucket name contains invalid characters"** → Ensure names contain only lowercase letters, numbers, dots, and hyphens
 * **"S3 bucket name is too short"** → Ensure combined name parts result in at least 3 characters
 * **Resources not deleted in development** → Check that stage is not 'prod' or 'staging' if you want `DESTROY` policy
-* **Inconsistent naming across environments** → Use `getStage()` to normalize stage names before resource creation
+* **Inconsistent naming across environments** → Use `getStage()` to normalise stage names before resource creation
 
 ## Best Practices
 
 1. **Use consistent service names** across all environments and resources
 2. **Leverage region suffixes** for multi-region deployments to avoid naming conflicts
 3. **Apply removal policies** using `getRemovalPolicyFromStage()` for appropriate resource lifecycle management
-4. **Normalize stages** with `getStage()` before passing to naming functions
+4. **Normalise stages** with `getStage()` before passing to naming functions
 5. **Keep names short** to stay within AWS service limits while maintaining readability
 6. **Use descriptive suffixes** when multiple resources of the same type exist (e.g., 'primary', 'backup', 'logs')
 7. **Validate early** by testing resource names during development and CI/CD

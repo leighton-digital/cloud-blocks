@@ -299,7 +299,7 @@ These settings can be customized using the optional `alarmConfiguration` propert
 alarmConfiguration: {
   threshold: 5,                                                    // Lower threshold for critical services
   evaluationPeriods: 2,                                          // Require multiple periods to reduce false alarms
-  treatMissingData: cloudwatch.TreatMissingData.BREACHING        // Change missing data behavior
+  treatMissingData: cloudwatch.TreatMissingData.BREACHING        // Change missing data behaviour
 }
 ```
 
@@ -409,7 +409,7 @@ if (progressiveLambda.widgets.length > 0) {
 - **Test alarm sensitivity** in staging environments before production deployment
 - **Consider missing data treatment** based on your monitoring requirements
 
-### 4. Dashboard Organization
+### 4. Dashboard Organisation
 
 - Group related Lambda functions in the same dashboard
 - Use consistent naming conventions for metrics

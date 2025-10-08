@@ -2,16 +2,16 @@ import { Stage } from '../../types/environments';
 import { getStage } from './get-stage';
 
 describe('getStage', () => {
-  it('should return "prod" for Stage.prod', () => {
-    expect(getStage(Stage.prod)).toBe(Stage.prod);
+  it('should return "prod" for Stage.Prod', () => {
+    expect(getStage(Stage.Prod)).toBe(Stage.Prod);
   });
 
-  it('should return "staging" for Stage.staging', () => {
-    expect(getStage(Stage.staging)).toBe(Stage.staging);
+  it('should return "staging" for Stage.Staging', () => {
+    expect(getStage(Stage.Staging)).toBe(Stage.Staging);
   });
 
-  it('should return "test" for Stage.test', () => {
-    expect(getStage(Stage.test)).toBe(Stage.test);
+  it('should return "test" for Stage.Test', () => {
+    expect(getStage(Stage.Test)).toBe(Stage.Test);
   });
 
   it('should return the input string for ephemeral stage', () => {

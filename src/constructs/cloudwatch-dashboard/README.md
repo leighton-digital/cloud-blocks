@@ -202,7 +202,7 @@ export class MonitoringStack extends cdk.Stack {
 import * as cdk from 'aws-cdk-lib';
 import { CloudWatchDashboard } from '@leighton-digital/cloud-blocks';
 
-// Default behavior: Dashboard is deleted when stack is deleted
+// Default behaviour: Dashboard is deleted when stack is deleted
 const ephemeralDashboard = new CloudWatchDashboard(this, 'EphemeralDashboard', {
   dashboardName: 'ephemeral-monitoring',
   dashboardDescription: 'Dashboard for development environment',
@@ -322,7 +322,7 @@ const dashboard = new CloudWatchDashboard(this, 'RichDashboard', {
 ## Operational notes & caveats
 
 * **Widget Limits**: CloudWatch dashboards support up to 500 widgets per dashboard
-* **Refresh Rates**: Dashboards auto-refresh every minute; use periodOverride for custom behavior
+* **Refresh Rates**: Dashboards auto-refresh every minute; use periodOverride for custom behaviour
 * **Cross-Account Metrics**: Requires appropriate IAM permissions for cross-account metric access
 * **Regional Considerations**: Dashboards exist in specific regions; metrics from other regions incur additional charges
 * **Performance**: Large dashboards with many metrics may have slower load times

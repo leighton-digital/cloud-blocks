@@ -8,7 +8,7 @@ A CDK construct that provisions an **Amazon CloudFront** distribution in front o
 * Route 53 **A-alias** record for your API hostname
 * Centralized **S3 access-logs** bucket
 * Secure CloudFront defaults (HTTPS only, TLS 1.2\_2021, HTTP/3, compression)
-* Sensible API behavior (disabled caching, forward common viewer data)
+* Sensible API behaviour (disabled caching, forward common viewer data)
 * Optional **Lambda\@Edge** (version) association
 * Optional integration with a **monitoring facade** (e.g. `cdk-monitoring-constructs`)
 * Optional **CloudWatch Alarms** configuration for error monitoring (uses `cdk-monitoring-constructs` alarm types)
@@ -168,7 +168,7 @@ interface AlarmConfig {
 * **CloudFront Distribution**: `${id}ApiCloudfrontDistribution-${stageName}`
 
   * Alias: `[apiSubDomain]`; logging to access-logs bucket
-  * Secure defaults & API-friendly behavior (see **Features**)
+  * Secure defaults & API-friendly behaviour (see **Features**)
 * **Route 53 A-alias**: `${id}Alias-${stageName}` → CloudFront distribution
 * **CloudWatch Alarms** (if `alarmConfig` provided):
 
@@ -231,9 +231,9 @@ test('no unsuppressed AwsSolutions findings', () => {
 ## Extending
 
 * **WAF**: Associate an AWS WAF web ACL to the distribution (rule `CFR2`).
-* **Geo restrictions**: Configure `geoRestriction` on behaviors (rule `CFR1`).
+* **Geo restrictions**: Configure `geoRestriction` on behaviours (rule `CFR1`).
 * **Headers policy**: If your API sends CORS/security headers itself, swap to `ResponseHeadersPolicy.SECURITY_HEADERS`.
-* **Caching**: If parts of your API are cacheable, override `cachePolicy`/behaviors accordingly.
+* **Caching**: If parts of your API are cacheable, override `cachePolicy`/behaviours accordingly.
 * **Monitoring**: Supply a `monitoringFacade` to attach alarms/dashboards without extra wiring.
 * **Alarms**: Provide an `alarmConfig` to enable CloudWatch alarms for error rates with SNS notifications.
 

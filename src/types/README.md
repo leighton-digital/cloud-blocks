@@ -23,7 +23,7 @@ The types in this directory serve to:
 ### Resource Naming Types (`resource-name-types.ts`)
 - **`ResourceNameParts`** - Interface defining the core components for generating AWS resource names
 - **`ResourceNameOptions`** - Configuration options for resource name generation
-- Standardized naming convention types following the pattern: `<stage>-<service>-<resource>`
+- Standardised naming convention types following the pattern: `<stage>-<service>-<resource>`
 
 ### Tag Types (`tag-types.ts`)
 - **`TagKey`** - Base type for tag keys (extensible for project-specific constraints)

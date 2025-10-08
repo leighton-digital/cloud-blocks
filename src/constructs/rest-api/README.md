@@ -3,7 +3,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/leighton-digital/cloud-blocks/blob/main/LICENSE)
 ![Maintained](https://img.shields.io/maintenance/yes/2025)
 
-The RestApi construct is a custom AWS CDK construct that streamlines the creation and configuration of API Gateway REST APIs. It provides stage-aware CORS settings, automatic CloudWatch logging, and regional endpoint configuration. The construct allows customization of API description, deployment options, and CORS behavior based on the deployment stage (e.g., ephemeral stages get permissive CORS). It also sets up access logging and tracing for enhanced observability and security. This construct is designed to simplify API Gateway setup while enforcing best practices for monitoring and access control.
+The RestApi construct is a custom AWS CDK construct that streamlines the creation and configuration of API Gateway REST APIs. It provides stage-aware CORS settings, automatic CloudWatch logging, and regional endpoint configuration. The construct allows customization of API description, deployment options, and CORS behaviour based on the deployment stage (e.g., ephemeral stages get permissive CORS). It also sets up access logging and tracing for enhanced observability and security. This construct is designed to simplify API Gateway setup while enforcing best practices for monitoring and access control.
 
 ---
 
@@ -231,7 +231,7 @@ The construct provides intelligent defaults that can be overridden by any corres
 * **CloudWatch metrics enabled** for monitoring API performance
 * **Access logs** to CloudWatch with 1-day retention for cost optimization
 
-**Default CORS Behavior:**
+**Default CORS Behaviour:**
 * **Production environments**: No CORS unless explicitly configured via `defaultCorsPreflightOptions`
 * **Staging environments** (when `isStagingEnvironment: true`): Permissive CORS for development convenience
   - Allow all origins (`*`)

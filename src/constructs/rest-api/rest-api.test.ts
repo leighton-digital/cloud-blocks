@@ -478,7 +478,7 @@ describe('RestApi', () => {
     });
   });
 
-  describe('Default behavior validation', () => {
+  describe('Default behaviour validation', () => {
     it('uses correct naming pattern for API resources', () => {
       restApi = new RestApi(stack, 'UserManagement', {
         stageName: 'production',

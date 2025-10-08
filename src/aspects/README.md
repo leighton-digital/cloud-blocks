@@ -8,7 +8,7 @@ A collection of **AWS CDK Aspects** for **infrastructure compliance and tagging 
 * **Tag validation** through the `RequiredTagsChecker` aspect
 * **Automated tagging** with the `addTagsToStack` utility function
 * **Policy enforcement** at CDK synthesis time
-* **Flexible configuration** supporting organization-specific tagging requirements
+* **Flexible configuration** supporting organisation-specific tagging requirements
 * **Error annotations** for missing or incorrect tag configurations
 * **Type-safe tag definitions** with TypeScript support
 
@@ -18,7 +18,7 @@ A collection of **AWS CDK Aspects** for **infrastructure compliance and tagging 
   * Validates presence of mandatory tags on CDK stacks
   * Ensures stacks have at least one tag applied
   * Generates synthesis-time errors for missing required tags
-  * Supports custom required tag lists per organization
+  * Supports custom required tag lists per organisation
 * **Tag Management Utilities**:
   * `addTagsToStack()` - Bulk apply tags to CDK stacks
   * Type-safe tag key/value definitions
@@ -39,7 +39,7 @@ import { RequiredTagsChecker } from '@leighton-digital/cdk-ts-core/aspects';
 const app = new App();
 const stack = new Stack(app, 'MyStack');
 
-// Define required tags for your organization
+// Define required tags for your organisation
 const requiredTags = ['Environment', 'Owner', 'Project', 'CostCenter'];
 
 // Apply the aspect to enforce tagging policy
@@ -82,7 +82,7 @@ import {
 } from '@leighton-digital/cdk-ts-core/aspects';
 import type { Tags } from '@leighton-digital/cdk-ts-core/types';
 
-// Define organization-wide required tags
+// Define organisation-wide required tags
 const organizationRequiredTags = [
   'Environment',
   'Owner',
@@ -370,7 +370,7 @@ The `RequiredTagsChecker` validates:
 
 ## What gets created
 
-### Aspect Behavior
+### Aspect Behaviour
 * **RequiredTagsChecker**:
   * Visits all constructs during CDK synthesis
   * Validates only `Stack` constructs
@@ -433,7 +433,7 @@ Tags.of(bucket).add('Environment', 'development');
 
 ## Best Practices
 
-1. **Define organization-wide required tags** early in your CDK adoption
+1. **Define organisation-wide required tags** early in your CDK adoption
 2. **Use tag factories** for consistent tag application across projects
 3. **Apply aspects at the App level** to enforce policies across all stacks
 4. **Include cost allocation tags** for accurate billing and cost tracking

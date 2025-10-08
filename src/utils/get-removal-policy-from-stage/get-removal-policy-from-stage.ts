@@ -13,16 +13,16 @@ import { Stage } from '../../types/environments';
  * @returns {RemovalPolicy} The appropriate removal policy for the given stage.
  *
  * @example
- * const policy = getRemovalPolicyFromStage(Stage.prod);
+ * const policy = getRemovalPolicyFromStage(Stage.Prod);
  * // Returns RemovalPolicy.RETAIN
  *
  * @example
- * const policy = getRemovalPolicyFromStage(Stage.develop);
+ * const policy = getRemovalPolicyFromStage(Stage.Develop);
  * // Returns RemovalPolicy.DESTROY
  */
 export function getRemovalPolicyFromStage(stage: string): RemovalPolicy {
   if (
-    [Stage.prod, Stage.staging].includes(stage.toLowerCase().trim() as Stage)
+    [Stage.Prod, Stage.Staging].includes(stage.toLowerCase().trim() as Stage)
   ) {
     return RemovalPolicy.RETAIN;
   }

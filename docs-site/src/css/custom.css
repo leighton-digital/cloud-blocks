@@ -2,8 +2,10 @@
    Leighton-style theming for Docusaurus
    -----------------------------------------
    - Keep Docusaurus/Infima intact
-   - Use tokens (CSS variables) first
-   - Minimal, targeted overrides
+   - Use tokens (CSS variables) fir/* ---------- Homepage hero block (optional) ----------
+   Use on your home page container to mirror Leighton's centered hero copy.
+   Example in src/pages/index.tsx:
+   <main className="container margin-vert--lg leighton-gradient"> … </main> */  - Minimal, targeted overrides
    ========================================= */
 
 /* ---------- Brand tokens (LIGHT mode) ---------- */

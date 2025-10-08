@@ -5,21 +5,21 @@ import { getRemovalPolicyFromStage } from './get-removal-policy-from-stage';
 describe('getRemovalPolicyFromStage', () => {
   describe('when stage is prod', () => {
     it('should return retain policy', () => {
-      const result = getRemovalPolicyFromStage(Stage.prod);
+      const result = getRemovalPolicyFromStage(Stage.Prod);
       expect(result).toBe(RemovalPolicy.RETAIN);
     });
   });
 
   describe('when stage is staging', () => {
     it('should return retain policy', () => {
-      const result = getRemovalPolicyFromStage(Stage.staging);
+      const result = getRemovalPolicyFromStage(Stage.Staging);
       expect(result).toBe(RemovalPolicy.RETAIN);
     });
   });
 
   describe('when stage is develop', () => {
     it('should return destroy policy', () => {
-      const result = getRemovalPolicyFromStage(Stage.develop);
+      const result = getRemovalPolicyFromStage(Stage.Develop);
       expect(result).toBe(RemovalPolicy.DESTROY);
     });
   });

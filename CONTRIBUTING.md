@@ -64,14 +64,6 @@ This project uses **CSpell** to enforce consistent spelling and language standar
 - **Pre-commit checks**: CSpell runs automatically before commits to catch spelling errors
 - **Custom dictionary**: Technical terms, AWS services, and project-specific vocabulary are included in the custom dictionary
 
-**Common UK vs US spellings to be aware of:**
-- Use "colour" not "color"
-- Use "behaviour" not "behavior"
-- Use "organisation" not "organization"
-- Use "realise" not "realize"
-- Use "analyse" not "analyze"
-- Use "centre" not "center"
-
 **Running spelling checks manually:**
 ```bash
 # Check all files

@@ -62,7 +62,7 @@ We use **[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)*
 feat(parser): add YAML support
 fix(cli): handle empty config without crashing
 feat(api)!: remove deprecated v1 endpoints
-BREAKING CHANGE: The v1 /users endpoint was removed in favor of /v2/users.
+BREAKING CHANGE: The v1 /users endpoint was removed in favour of /v2/users.
 ```
 
 ---

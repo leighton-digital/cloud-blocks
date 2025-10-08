@@ -2,6 +2,7 @@ import * as cdk from 'aws-cdk-lib';
 import * as apigw from 'aws-cdk-lib/aws-apigateway';
 import * as logs from 'aws-cdk-lib/aws-logs';
 import { Construct } from 'constructs';
+import { generateResourceName } from '../../utils';
 
 /**
  * Properties for configuring a RestApi construct.
@@ -249,7 +250,11 @@ export class RestApi extends Construct {
       defaultCorsPreflightOptions: corsOptions,
       cloudWatchRole: true,
       retainDeployments: false,
-      restApiName: `${id}-api-${props.stageName}`,
+      restApiName: generateResourceName({
+        stage: props.stageName,
+        service: id.toLowerCase(),
+        resource: 'api',
+      }),
       disableExecuteApiEndpoint: true,
       deploy: true,
       ...(props.deploy !== false && {

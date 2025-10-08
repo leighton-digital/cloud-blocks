@@ -1,0 +1,4 @@
+/**
+ * @packageDocumentation
+ * {@include ./README.md}
+ */

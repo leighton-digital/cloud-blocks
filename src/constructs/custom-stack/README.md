@@ -178,7 +178,7 @@ const comprehensiveStack = new CustomStack(app, 'ComprehensiveMonitoringStack', 
 - **Runbooks**: https://wiki.company.com/runbooks/api
 
 ## 📈 Dashboard Sections
-1. **Traffic Patterns** - Request volume and user behavior
+1. **Traffic Patterns** - Request volume and user behaviour
 2. **Performance Metrics** - Latency and throughput analysis
 3. **Error Analysis** - Error rates and failure investigation
 4. **Infrastructure Health** - Resource utilization and capacity`,

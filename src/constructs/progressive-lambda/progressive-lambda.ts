@@ -93,7 +93,7 @@ export interface ProgressiveLambdaProps extends nodeLambda.NodejsFunctionProps {
   /**
    * CloudWatch namespace for custom metrics.
    *
-   * Groups related metrics together for organization and filtering.
+   * Groups related metrics together for organisation and filtering.
    * Should follow a hierarchical naming convention.
    *
    * @example 'MyApp/Lambda', 'ECommerce/OrderProcessing'

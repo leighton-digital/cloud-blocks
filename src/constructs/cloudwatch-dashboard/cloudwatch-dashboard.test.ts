@@ -213,7 +213,7 @@ describe('CloudWatchDashboard', () => {
     // The default dashboard from beforeEach should have DESTROY removal policy
     expect(cloudwatchDashboard.applyRemovalPolicy).toBeDefined();
 
-    // Verify via CloudFormation template that DeletionPolicy is not set (default behavior)
+    // Verify via CloudFormation template that DeletionPolicy is not set (default behaviour)
     const template = Template.fromStack(stack);
     template.hasResource('AWS::CloudWatch::Dashboard', {});
   });
@@ -238,7 +238,7 @@ describe('CloudWatchDashboard', () => {
   it('supports all removal policy options', () => {
     // Test different removal policies
     const testCases = [
-      { policy: cdk.RemovalPolicy.DESTROY, expected: undefined }, // Default CloudFormation behavior
+      { policy: cdk.RemovalPolicy.DESTROY, expected: undefined }, // Default CloudFormation behaviour
       { policy: cdk.RemovalPolicy.RETAIN, expected: 'Retain' },
       { policy: cdk.RemovalPolicy.SNAPSHOT, expected: 'Snapshot' },
     ];

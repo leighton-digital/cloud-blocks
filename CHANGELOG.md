@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/leighton-digital/cloud-blocks/compare/v1.1.2...v1.2.0) (2025-10-08)
+
+
+### Features
+
+* implemented cspell in the project to ensure UK english wording is used ([dd0b4cb](https://github.com/leighton-digital/cloud-blocks/commit/dd0b4cb1a23e8e3d128a03fb1ec11fa1a8838fa1))
+* migrated aspects to the poject and updated document generation ([6d6dc90](https://github.com/leighton-digital/cloud-blocks/commit/6d6dc900f6d6114406fc541ed3e2936b588a968d))
+* migrated the infrastructure utility files from the ts-core project ([57a5e41](https://github.com/leighton-digital/cloud-blocks/commit/57a5e41a7605c21ec1383721956fcd53e2ba0f9f))
+
 # [1.2.0](https://github.com/leighton-digital/cloud-blocks/compare/v1.1.2...v1.2.0) (2025-10-03)
 
 

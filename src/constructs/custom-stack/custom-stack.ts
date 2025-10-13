@@ -176,7 +176,7 @@ export class CustomStack extends cdk.Stack {
       dashboardDescription,
       initialWidgets,
       dashboardRemovalPolicy,
-      ...stackProps
+      ..._stackProps
     } = props;
 
     this.isDashboardEnabled = createDashboard;

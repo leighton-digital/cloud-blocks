@@ -9,8 +9,9 @@
 /* ---------- Brand tokens (LIGHT mode) ---------- */
 :root {
   /* Typography */
-  --ifm-font-base: "Euclidcirculara", system-ui, -apple-system, Segoe UI, Roboto,
-    Arial, sans-serif;
+  --ifm-font-base:
+    "Euclidcirculara", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
   --ifm-heading-font-family: var(--ifm-font-base);
   --ifm-font-weight-base: 400;
   --ifm-heading-font-weight: 600;
@@ -120,9 +121,11 @@ body {
   border-radius: var(--ifm-button-border-radius);
   box-shadow: var(--ifm-global-shadow-lw);
   font-weight: 600;
-  font-family: "Montserrat", var(--ifm-font-base);
+  font-family: "Montserrat", var(--ifm-font-base), sans-serif;
   letter-spacing: 0.3px;
-  transition: transform .12s ease, box-shadow .12s ease;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
 }
 .button--primary:hover {
   transform: translateY(-1px);
@@ -134,7 +137,7 @@ body {
   border: 1px solid var(--brand-deep);
   background: transparent;
   color: var(--brand-deep);
-  font-family: "Montserrat", var(--ifm-font-base);
+  font-family: "Montserrat", var(--ifm-font-base), sans-serif;
 }
 .button--secondary:hover {
   background: var(--brand-deep);
@@ -155,7 +158,10 @@ body {
 .card {
   border-radius: var(--ifm-card-border-radius);
   box-shadow: var(--ifm-global-shadow-lw);
-  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    border-color 0.12s ease;
 }
 .brand-card:hover,
 .card:hover {
@@ -187,16 +193,16 @@ h3 {
 }
 
 /* Paragraph readability like Leighton (16/24) */
-.markdown p,
-p {
+p,
+.markdown p {
   font-size: 1rem;
   line-height: 1.5rem;
 }
 
 /* ---------- Links (accent magenta) ---------- */
 a:not(.button) {
-  text-decoration-thickness: .08em;
-  text-underline-offset: .15em;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.15em;
 }
 
 /* ---------- Homepage hero block (optional) ----------
@@ -215,7 +221,7 @@ a:not(.button) {
 .leighton-hero p,
 .leighton-hero .hero__subtitle {
   color: #fff;
-  font-family: "Montserrat", var(--ifm-font-base);
+  font-family: "Montserrat", var(--ifm-font-base), sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
   opacity: 0.95;
@@ -227,7 +233,7 @@ input[type="email"],
 input[type="search"],
 select,
 textarea {
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
 }
 
@@ -257,5 +263,5 @@ textarea {
 
 /* ---------- Optional: doc page header divider to echo Leighton’s clean sections ---------- */
 .theme-doc-markdown header + p {
-  margin-top: .4rem;
+  margin-top: 0.4rem;
 }

@@ -1,4 +1,9 @@
 module.exports = (plop) => {
+  const PATHS = {
+    constructs: 'src/constructs',
+    src: 'src',
+  };
+
   // Helper to convert camelCase/PascalCase to kebab-case
   plop.setHelper('kebabCase', (text) => {
     return text
@@ -72,27 +77,27 @@ module.exports = (plop) => {
       // Create the directory structure
       {
         type: 'add',
-        path: 'src/{{kebabCase name}}/index.ts',
+        path: `${PATHS.constructs}/{{kebabCase name}}/index.ts`,
         templateFile: 'plop-templates/index.ts.hbs',
       },
       {
         type: 'add',
-        path: 'src/{{kebabCase name}}/__docs__.ts',
+        path: `${PATHS.constructs}/{{kebabCase name}}/__docs__.ts`,
         templateFile: 'plop-templates/__docs__.ts.hbs',
       },
       {
         type: 'add',
-        path: 'src/{{kebabCase name}}/README.md',
+        path: `${PATHS.constructs}/{{kebabCase name}}/README.md`,
         templateFile: 'plop-templates/README.md.hbs',
       },
       {
         type: 'add',
-        path: 'src/{{kebabCase name}}/{{kebabCase name}}.ts',
+        path: `${PATHS.constructs}/{{kebabCase name}}/{{kebabCase name}}.ts`,
         templateFile: 'plop-templates/construct.ts.hbs',
       },
       {
         type: 'add',
-        path: 'src/{{kebabCase name}}/{{kebabCase name}}.test.ts',
+        path: `${PATHS.constructs}/{{kebabCase name}}/{{kebabCase name}}.test.ts`,
         templateFile: 'plop-templates/construct.test.ts.hbs',
       },
       // Create the nested test stack
@@ -104,7 +109,7 @@ module.exports = (plop) => {
       // Update main index.ts to export the new construct
       {
         type: 'modify',
-        path: 'src/index.ts',
+        path: `${PATHS.src}/index.ts`,
         pattern: /(export \* from '\.\/api-gateway-cloudfront-distribution';)/,
         template: "$1\nexport * from './{{kebabCase name}}';",
       },

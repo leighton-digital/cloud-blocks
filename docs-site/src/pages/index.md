@@ -64,7 +64,7 @@ pnpm install
 **Set up development environment:**
 
 ```bash
-pnpm run dev:setup
+pnpm dev:setup
 ```
 
 > This installs **Lefthook** git hooks for automated formatting, linting, spell checking, and pre-commit checks.
@@ -85,7 +85,7 @@ This project uses several tools to maintain code quality and consistency:
 * **Build all packages**
 
   ```bash
-  pnpm run build
+  pnpm build
   ```
 * **Run tests**
 
@@ -95,8 +95,8 @@ This project uses several tools to maintain code quality and consistency:
 * **Lint & format (Biome)**
 
   ```bash
-  pnpm run lint
-  pnpm run format:check
+  pnpm lint
+  pnpm format:check
   ```
 * **Spell check (CSpell)**
 
@@ -106,7 +106,7 @@ This project uses several tools to maintain code quality and consistency:
 * **Type-check**
 
   ```bash
-  pnpm run typecheck
+  pnpm typecheck
   ```
 
 * **Test CDK synthesis**
@@ -116,7 +116,7 @@ This project uses several tools to maintain code quality and consistency:
   pnpx cdk synth --all
   ```
 
-> **Lefthook** (installed via `pnpm run dev:setup`) runs local git hooks to format/lint staged files, check spelling (CSpell), and run type/build checks before commits and pushes.
+> **Lefthook** (installed via `pnpm dev:setup`) runs local git hooks to format/lint staged files, check spelling (CSpell), and run type/build checks before commits and pushes.
 
 ---
 
@@ -146,7 +146,7 @@ This project includes a comprehensive testing approach to ensure all CDK constru
 **Local Testing**
 ```bash
 # Build the constructs
-pnpm run build
+pnpm build
 
 # Test synthesis locally
 cd tests/test-project
@@ -217,7 +217,7 @@ We welcome contributions from the community! 🎉
 2. Make changes, add tests, run checks.
 3. Open a PR.
 
-**Lefthook** (set up via `pnpm run dev:setup`) ensures format/lint fixes are applied, spelling is checked (UK English), and type/build checks run pre-commit and pre-push.
+**Lefthook** (set up via `pnpm dev:setup`) ensures format/lint fixes are applied, spelling is checked (UK English), and type/build checks run pre-commit and pre-push.
 
 ---
 

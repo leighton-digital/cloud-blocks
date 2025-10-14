@@ -64,7 +64,7 @@ pnpm install
 **Set up development environment:**
 
 ```bash
-pnpm run dev:setup
+pnpm dev:setup
 ```
 
 > This installs **Lefthook** git hooks for automated formatting, linting, spell checking, and pre-commit checks.

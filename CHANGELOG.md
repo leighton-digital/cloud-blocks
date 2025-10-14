@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/leighton-digital/cloud-blocks/compare/v1.2.0...v1.2.1) (2025-10-14)
+
+
+### Bug Fixes
+
+* updates the plopfile and nested stack hbs to point to the  directory ([cd9569b](https://github.com/leighton-digital/cloud-blocks/commit/cd9569b65900de8ed4f63b1f5023e2e227ea7e7a))
+
 # [1.2.0](https://github.com/leighton-digital/cloud-blocks/compare/v1.1.2...v1.2.0) (2025-10-08)
 
 

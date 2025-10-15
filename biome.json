@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.6/schema.json",
   "vcs": {
     "enabled": false,
     "clientKind": "git",
@@ -7,14 +7,14 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": [
-      "node_modules/**/*",
-      "dist/**/*",
-      "package.json",
-      "docs-site/**/*",
-      "scripts/**/*",
-      "docs/**/*",
-      "cdk.out/**/*"
+    "includes": [
+      "**",
+      "!**/.docusaurus/**/*",
+      "!**/build/**/*",
+      "!**/cdk.out/**/*",
+      "!**/dist/**/*",
+      "!**/docs/**/*",
+      "!**/node_modules/**/*"
     ]
   },
   "formatter": {
@@ -23,13 +23,17 @@
     "indentStyle": "space",
     "lineEnding": "lf"
   },
-  "organizeImports": {
-    "enabled": true
-  },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
     }
   },
   "javascript": {

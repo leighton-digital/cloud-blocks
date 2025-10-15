@@ -171,15 +171,11 @@ describe('ProgressiveLambda', () => {
       );
       const nagSnsTopic = new sns.Topic(nagStack, 'NagTopic');
 
-      const progressiveLambda = new ProgressiveLambda(
-        nagStack,
-        'NagProgressiveLambda',
-        {
-          ...defaultConfig,
-          application: nagApplication,
-          snsTopic: nagSnsTopic,
-        },
-      );
+      new ProgressiveLambda(nagStack, 'NagProgressiveLambda', {
+        ...defaultConfig,
+        application: nagApplication,
+        snsTopic: nagSnsTopic,
+      });
 
       // Add necessary suppressions for common CDK Nag violations
       NagSuppressions.addResourceSuppressions(nagSnsTopic, [
@@ -389,17 +385,13 @@ describe('ProgressiveLambda', () => {
     });
 
     it('should validate alarm configuration preserves other properties', () => {
-      const customAlarmLambda = new ProgressiveLambda(
-        stack,
-        'ValidateAlarmLambda',
-        {
-          ...defaultConfig,
-          alarmConfiguration: {
-            threshold: 20,
-            evaluationPeriods: 3,
-          },
+      new ProgressiveLambda(stack, 'ValidateAlarmLambda', {
+        ...defaultConfig,
+        alarmConfiguration: {
+          threshold: 20,
+          evaluationPeriods: 3,
         },
-      );
+      });
 
       const template = Template.fromStack(stack);
 
@@ -459,16 +451,12 @@ describe('ProgressiveLambda', () => {
 
   describe('Edge cases and validation', () => {
     it('should handle zero threshold in alarm configuration', () => {
-      const zeroThresholdLambda = new ProgressiveLambda(
-        stack,
-        'ZeroThresholdLambda',
-        {
-          ...defaultConfig,
-          alarmConfiguration: {
-            threshold: 0,
-          },
+      new ProgressiveLambda(stack, 'ZeroThresholdLambda', {
+        ...defaultConfig,
+        alarmConfiguration: {
+          threshold: 0,
         },
-      );
+      });
 
       const template = Template.fromStack(stack);
       template.hasResourceProperties('AWS::CloudWatch::Alarm', {
@@ -477,16 +465,12 @@ describe('ProgressiveLambda', () => {
     });
 
     it('should handle high evaluation periods', () => {
-      const highEvaluationLambda = new ProgressiveLambda(
-        stack,
-        'HighEvaluationLambda',
-        {
-          ...defaultConfig,
-          alarmConfiguration: {
-            evaluationPeriods: 10,
-          },
+      new ProgressiveLambda(stack, 'HighEvaluationLambda', {
+        ...defaultConfig,
+        alarmConfiguration: {
+          evaluationPeriods: 10,
         },
-      );
+      });
 
       const template = Template.fromStack(stack);
       template.hasResourceProperties('AWS::CloudWatch::Alarm', {
@@ -538,16 +522,12 @@ describe('ProgressiveLambda', () => {
     });
 
     it('should preserve alarm description with custom configuration', () => {
-      const customAlarmLambda = new ProgressiveLambda(
-        stack,
-        'CustomDescriptionLambda',
-        {
-          ...defaultConfig,
-          alarmConfiguration: {
-            threshold: 7,
-          },
+      new ProgressiveLambda(stack, 'CustomDescriptionLambda', {
+        ...defaultConfig,
+        alarmConfiguration: {
+          threshold: 7,
         },
-      );
+      });
 
       const template = Template.fromStack(stack);
       template.hasResourceProperties('AWS::CloudWatch::Alarm', {

@@ -1,6 +1,10 @@
-import { promises as fs } from 'node:fs';
+import {
+  existsSync,
+  promises as fs,
+  readFileSync,
+  writeFileSync,
+} from 'node:fs';
 import path from 'node:path';
-import { readFileSync, writeFileSync, existsSync } from "fs";
 
 /**
  * A post processing script to organise the output of TypeDoc to match our desired
@@ -32,8 +36,10 @@ const filesToCopy = [
  * @returns {boolean}
  */
 const isADirectory = (file) => {
-  return file.isDirectory() && file.name !== "node_modules" && file.name !== ".git";
-}
+  return (
+    file.isDirectory() && file.name !== 'node_modules' && file.name !== '.git'
+  );
+};
 
 /**
  * Remove duplicate nested directories by moving contents up one level
@@ -53,10 +59,15 @@ async function removeDuplicateNestedDirectories() {
 
         // Check for duplicate nested directories
         for (const subEntry of subEntries) {
-          if (isADirectory(subEntry) && subEntry.name === entry.name.replace('-gateway', '')) {
+          if (
+            isADirectory(subEntry) &&
+            subEntry.name === entry.name.replace('-gateway', '')
+          ) {
             // Found duplicate nested directory - move all contents up one level
             const duplicateDir = path.join(entryPath, subEntry.name);
-            const duplicateContents = await fs.readdir(duplicateDir, { withFileTypes: true });
+            const duplicateContents = await fs.readdir(duplicateDir, {
+              withFileTypes: true,
+            });
 
             // Move each item from the duplicate directory to its parent
             for (const item of duplicateContents) {
@@ -101,28 +112,31 @@ async function renameModulesMarkdown() {
  * fix duplicate text in links, remove index.md from paths, and update the heading.
  */
 async function processModulesMarkdown() {
-  const file = path.join(docsRefDir, '01-Library Reference/01-Library Reference.md');
-  let content = readFileSync(file, "utf8");
+  const file = path.join(
+    docsRefDir,
+    '01-Library Reference/01-Library Reference.md',
+  );
+  const content = readFileSync(file, 'utf8');
 
   // Split into lines and filter out lines containing "_docs"
-  let lines = content.split(/\r?\n/).filter(l => !l.includes("_docs"));
+  let lines = content.split(/\r?\n/).filter((l) => !l.includes('_docs'));
 
   // Fix duplicate text in links and remove index.md from paths
-  lines = lines.map(line => {
+  lines = lines.map((line) => {
     // Change heading from "## Modules" to "# Library Reference"
-    if (line.trim() === "## Modules") {
-      return "# Library Reference";
+    if (line.trim() === '## Modules') {
+      return '# Library Reference';
     }
 
     // Match markdown links and simplify by removing everything after the first /
     // Pattern: [text/anything](path/anything/index.md) or [text/anything](path/anything/)
-    const linkPattern = /\[([^\/\]]+)\/[^\]]*\]\(([^\/\)]+)\/[^\)]*\)/g;
+    const linkPattern = /\[([^/\]]+)\/[^\]]*\]\(([^/)]+)\/[^)]*\)/g;
 
     // Replace with simplified version: [construct-name](construct-name/)
     return line.replace(linkPattern, '[$1]($2/)');
   });
 
-  const out = lines.join("\n");
+  const out = lines.join('\n');
   console.log(out);
   writeFileSync(file, out);
 }
@@ -180,14 +194,20 @@ async function organiseDocMarkdownFiles() {
   const baseDir = path.join(docsRefDir, '01-Library Reference');
   const entries = await fs.readdir(baseDir, { withFileTypes: true });
   for (const e of entries) {
-    if (e.isDirectory() && e.name !== "node_modules" && e.name !== ".git") {
+    if (e.isDirectory() && e.name !== 'node_modules' && e.name !== '.git') {
       const dirPath = path.join(baseDir, e.name);
       const docsDir = path.join(dirPath, '__docs');
       if (existsSync(path.join(docsDir, 'index.md')) === true) {
-        await fs.rename(path.join(docsDir, 'index.md'), path.join(docsDir, `${e.name}.md`));
+        await fs.rename(
+          path.join(docsDir, 'index.md'),
+          path.join(docsDir, `${e.name}.md`),
+        );
       }
       if (existsSync(path.join(docsDir, `${e.name}.md`)) === true) {
-        await fs.rename(path.join(docsDir, `${e.name}.md`), path.join(baseDir, `${e.name}/${e.name}.md`));
+        await fs.rename(
+          path.join(docsDir, `${e.name}.md`),
+          path.join(baseDir, `${e.name}/${e.name}.md`),
+        );
       }
       if (existsSync(docsDir) === true) {
         fs.rmdir(docsDir);
@@ -234,13 +254,13 @@ async function fixMdxSyntax() {
       // This specifically targets lines with patterns like {partition}, {region}, etc.
       content = content.replace(
         /^(\s*)(arn:\{[^}]+\}:[^}]*\{[^}]+\}:[^}]*\{[^}]+\}:[^}]*\{[^}]+\}:[^}]*\{[^}]+\}.*?)$/gm,
-        '$1`$2`'
+        '$1`$2`',
       );
 
       // Also escape isolated curly brace expressions that might be JSX-like
       content = content.replace(
         /(\s+)(\{[a-zA-Z][a-zA-Z0-9_-]*\})(\s+)/g,
-        '$1`$2`$3'
+        '$1`$2`$3',
       );
 
       await fs.writeFile(filePath, content, 'utf8');

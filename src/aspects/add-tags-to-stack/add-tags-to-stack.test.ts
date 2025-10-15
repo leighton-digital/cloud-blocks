@@ -63,7 +63,7 @@ describe('addTagsToStack', () => {
     new s3.Bucket(stack, 'TestBucket');
 
     const template = Template.fromStack(stack);
-    const templateJson = template.toJSON();
+    template.toJSON();
 
     // Check that all tags were applied to the S3 bucket
     // Test each tag individually to avoid order issues
@@ -331,7 +331,7 @@ describe('addTagsToStack', () => {
 
     // Create multiple different resource types
     new s3.Bucket(stack, 'TestBucket');
-    const vpc = new cdk.aws_ec2.Vpc(stack, 'TestVpc');
+    new cdk.aws_ec2.Vpc(stack, 'TestVpc');
 
     const template = Template.fromStack(stack);
 

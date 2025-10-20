@@ -74,7 +74,7 @@
     "@changesets/cli": "2.29.6",
     "@commitlint/cli": "19.8.1",
     "@commitlint/config-conventional": "19.8.1",
-    "@cspell/dict-en-gb": "5.0.14",
+    "@cspell/dict-en-gb": "5.0.15",
     "@docusaurus/core": "3.8.1",
     "@docusaurus/preset-classic": "3.8.1",
     "@docusaurus/theme-classic": "3.8.1",

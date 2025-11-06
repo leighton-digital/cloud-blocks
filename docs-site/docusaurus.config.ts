@@ -84,7 +84,7 @@ const config: Config = {
           label: 'Library Reference',
         },
         {
-          href: 'https://github.com/Leighton/cloud-blocks',
+          href: 'https://github.com/leighton-digital/cloud-blocks',
           label: 'GitHub',
           position: 'right',
         },
@@ -102,7 +102,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub Issues',
-              href: 'https://github.com/Leighton/cloud-blocks/issues',
+              href: 'https://github.com/leighton-digital/cloud-blocks/issues',
             },
           ],
         },

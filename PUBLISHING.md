@@ -11,11 +11,13 @@ This guide explains how community leads can publish the **Cloud Blocks** package
    ```bash
    pnpm test
    ```
+
 2. An npm account with publish rights to the `@leighton-digital/*` scope.
 
    ```bash
    npm login
    ```
+
 3. Access to the repo’s **`NPM_TOKEN`** secret (must be an **Automation** token if org requires 2FA).
 4. `package.json` includes:
 
@@ -56,9 +58,9 @@ We use **[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)*
 * `BREAKING CHANGE:` in the commit footer (or `feat!:` / `fix!:`) → **major**
 * Changelog is generated automatically into `CHANGELOG.md`.
 
-**Commit examples**
+### Commit examples
 
-```
+```text
 feat(parser): add YAML support
 fix(cli): handle empty config without crashing
 feat(api)!: remove deprecated v1 endpoints
@@ -74,7 +76,6 @@ Releases are created **automatically** on pushes to `main` that include qualifyi
 ### 1) Workflow file
 
 The release is automatically performed through the [GitHub Release Workflow](https://github.com/leighton-digital/cloud-blocks/blob/main/.github/workflows/release-publication.yaml)
-
 
 ### 2) semantic-release config
 
@@ -115,11 +116,13 @@ If CI is unavailable and you must publish:
    pnpm install --frozen-lockfile
    pnpm build
    ```
+
 2. **Strongly preferred**: run a local **dry run** first:
 
    ```bash
    pnpm dlx semantic-release --dry-run
    ```
+
 3. If absolutely necessary to publish without semantic-release, you can:
 
    ```bash
@@ -225,11 +228,12 @@ npm view @leighton-digital/api-gateway-cloudfront-distribution versions
   pnpm typecheck
   pnpm test
   ```
+
 * Use `npm pack` locally to preview the publish contents:
 
   ```bash
   pnpm pack
   ```
+
 * Prefer CI-driven releases. Avoid manual `pnpm publish` except in emergencies.
 * Adopt Conventional Commits consistently across all changes.
-

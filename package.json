@@ -44,7 +44,7 @@
     "format:check": "biome check --formatter-enabled=true --linter-enabled=false .",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "spell:check": "cspell .",
-    "spell:check-files": "cspell",
+    "spell:check-files": "cspell --no-must-find-files --files",
     "commit": "cz",
     "build": "rm -f tsconfig.tsbuildinfo && rm -rf ./dist && tsc -p tsconfig.json",
     "test": "jest",
@@ -109,7 +109,7 @@
     "aws-cdk-lib": "2.182.0",
     "cdk-monitoring-constructs": "9.3.0",
     "cdk-nag": "2.35.62",
-    "constructs": "10.0.0"
+    "constructs": "10.0.5"
   },
   "dependencies": {
     "zod": "4.1.12"

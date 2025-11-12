@@ -88,7 +88,7 @@
     "@semantic-release/release-notes-generator": "14.1.0",
     "@swc/jest": "0.2.39",
     "@types/jest": "30.0.0",
-    "@types/node": "24.7.2",
+    "@types/node": "24.10.1",
     "commit-and-tag-version": "12.5.1",
     "commitizen": "4.3.1",
     "cspell": "9.3.0",

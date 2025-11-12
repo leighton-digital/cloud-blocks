@@ -20,11 +20,23 @@ updates:
           applies-to: version-updates
           update-types:
             - "patch"
+        docusaurus:
+          applies-to: version-updates
+          patterns:
+            - "@docusaurus/*"
   - package-ecosystem: "npm"
     directory: "/docs-site"
     # Merge in the common configuration
     <<: *common-config
+    ignore:
+      - dependency-name: "@docusaurus/*"
   - package-ecosystem: "github-actions"
     directory: "/"
-    # Merge in the common configuration
-    <<: *common-config
+    schedule:
+      interval: "daily"
+      time: "03:00"
+    cooldown:
+      default-days: 5
+      semver-major-days: 30
+      semver-minor-days: 7
+      semver-patch-days: 3

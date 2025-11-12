@@ -18,21 +18,25 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 To test changes to this package locally in another project:
 
 1. Build the package:
+
    ```bash
    pnpm run build
    ```
 
 2. Create a symbolic link:
+
    ```bash
    pnpm link
    ```
 
 3. In your test project:
+
    ```bash
    pnpm link @leighton-digital/cloud-blocks
    ```
 
 4. To remove the link:
+
    ```bash
    pnpm unlink @leighton-digital/cloud-blocks
    ```
@@ -65,6 +69,7 @@ This project uses **CSpell** to enforce consistent spelling and language standar
 - **Custom dictionary**: Technical terms, AWS services, and project-specific vocabulary are included in the custom dictionary
 
 **Running spelling checks manually:**
+
 ```bash
 # Check all files
 pnpm spell:check
@@ -91,10 +96,6 @@ We use Jest for testing. Please ensure:
 4. Reference any related issues
 5. Wait for review
 6. Be prepared to make requested changes
-
-## Code of Conduct
-
-Please follow our [Code of Conduct](CODE_OF_CONDUCT.md) in all interactions.
 
 ## Questions?
 

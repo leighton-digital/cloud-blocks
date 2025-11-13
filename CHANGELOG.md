@@ -1,3 +1,11 @@
+## [1.2.2](https://github.com/leighton-digital/cloud-blocks/compare/v1.2.1...v1.2.2) (2025-11-13)
+
+
+### Bug Fixes
+
+* docusarus version mismatch ([#38](https://github.com/leighton-digital/cloud-blocks/issues/38)) ([803f61d](https://github.com/leighton-digital/cloud-blocks/commit/803f61d36218adf060d8fd2cf2b1201ae5067b7a))
+* removes dependabot yaml aliases ([#39](https://github.com/leighton-digital/cloud-blocks/issues/39)) ([be22d1e](https://github.com/leighton-digital/cloud-blocks/commit/be22d1e49339c8f408df24d0caa77049080fd7d8))
+
 ## [1.2.1](https://github.com/leighton-digital/cloud-blocks/compare/v1.2.0...v1.2.1) (2025-10-14)
 
 

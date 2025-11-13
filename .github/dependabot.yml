@@ -3,31 +3,43 @@ updates:
   # First update serves as template with common configuration
   - package-ecosystem: "npm"
     directory: "/"
-    # Define anchor for common configuration block
-    <<: &common-config
-      schedule:
-        interval: "daily"
-        time: "03:00"
-      cooldown:
-        default-days: 5
-        semver-major-days: 30
-        semver-minor-days: 7
-        semver-patch-days: 3
-      groups:
-        # Specify a name for the group, which will be used in pull request titles
-        # and branch names
-        patches:
-          applies-to: version-updates
-          update-types:
-            - "patch"
-        docusaurus:
-          applies-to: version-updates
-          patterns:
-            - "@docusaurus/*"
+    schedule:
+      interval: "daily"
+      time: "03:00"
+    cooldown:
+      default-days: 5
+      semver-major-days: 30
+      semver-minor-days: 7
+      semver-patch-days: 3
+    groups:
+      # Specify a name for the group, which will be used in pull request titles
+      # and branch names
+      patches:
+        applies-to: version-updates
+        update-types:
+          - "patch"
+      docusaurus:
+        applies-to: version-updates
+        patterns:
+          - "@docusaurus/*"
+
   - package-ecosystem: "npm"
     directory: "/docs-site"
-    # Merge in the common configuration
-    <<: *common-config
+    schedule:
+      interval: "daily"
+      time: "03:00"
+    cooldown:
+      default-days: 5
+      semver-major-days: 30
+      semver-minor-days: 7
+      semver-patch-days: 3
+    groups:
+      # Specify a name for the group, which will be used in pull request titles
+      # and branch names
+      patches:
+        applies-to: version-updates
+        update-types:
+          - "patch"
     ignore:
       - dependency-name: "@docusaurus/*"
   - package-ecosystem: "github-actions"

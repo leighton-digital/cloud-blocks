@@ -1,19 +1,17 @@
 version: 2
 updates:
-  # First update serves as template with common configuration
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
       time: "03:00"
+      timezone: "Europe/London"
     cooldown:
       default-days: 5
       semver-major-days: 30
       semver-minor-days: 7
       semver-patch-days: 3
     groups:
-      # Specify a name for the group, which will be used in pull request titles
-      # and branch names
       patches:
         applies-to: version-updates
         update-types:
@@ -28,14 +26,13 @@ updates:
     schedule:
       interval: "daily"
       time: "03:00"
+      timezone: "Europe/London"
     cooldown:
       default-days: 5
       semver-major-days: 30
       semver-minor-days: 7
       semver-patch-days: 3
     groups:
-      # Specify a name for the group, which will be used in pull request titles
-      # and branch names
       patches:
         applies-to: version-updates
         update-types:
@@ -47,8 +44,4 @@ updates:
     schedule:
       interval: "daily"
       time: "03:00"
-    cooldown:
-      default-days: 5
-      semver-major-days: 30
-      semver-minor-days: 7
-      semver-patch-days: 3
+      timezone: "Europe/London"

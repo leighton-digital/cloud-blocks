@@ -61,8 +61,8 @@ importers:
         specifier: 19.8.1
         version: 19.8.1
       '@cspell/dict-en-gb':
-        specifier: 5.0.15
-        version: 5.0.15
+        specifier: 5.0.19
+        version: 5.0.19
       '@docusaurus/core':
         specifier: 'catalog:'
         version: 3.9.2(@mdx-js/react@3.1.1(@types/react@19.2.2)(react@19.2.0))(@swc/core@1.13.5)(esbuild@0.25.11)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
@@ -1215,8 +1215,8 @@ packages:
   '@cspell/dict-en-gb-mit@3.1.14':
     resolution: {integrity: sha512-b+vEerlHP6rnNf30tmTJb7JZnOq4WAslYUvexOz/L3gDna9YJN3bAnwRJ3At3bdcOcMG7PTv3Pi+C73IR22lNg==}
 
-  '@cspell/dict-en-gb@5.0.15':
-    resolution: {integrity: sha512-kUQbHlLc4AFX2stQ2at7+/qS4X0G8blTqOqqkt6GbiTCEEaYWjXi8GF2OSVQ9QeFexfUeUITop6jU6/jKxI/Fw==}
+  '@cspell/dict-en-gb@5.0.19':
+    resolution: {integrity: sha512-/p+p/9q8XTzsE0GxbZZKcC1rTLYmCpilYw8aC9Q1xJbve8YqZnpxk8IxRyaHwfy1TeKMQNs6heZZRtzPag0rCw==}
 
   '@cspell/dict-en_us@4.4.24':
     resolution: {integrity: sha512-JE+/H2YicHJTneRmgH4GSI21rS+1yGZVl1jfOQgl8iHLC+yTTMtCvueNDMK94CgJACzYAoCsQB70MqiFJJfjLQ==}
@@ -10365,7 +10365,7 @@ snapshots:
 
   '@cspell/dict-en-gb-mit@3.1.14': {}
 
-  '@cspell/dict-en-gb@5.0.15': {}
+  '@cspell/dict-en-gb@5.0.19': {}
 
   '@cspell/dict-en_us@4.4.24': {}
 

@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/leighton-digital/cloud-blocks/compare/v1.2.2...v1.2.3) (2025-11-25)
+
+
+### Bug Fixes
+
+* removes cooldown from github actions dependabot config ([#40](https://github.com/leighton-digital/cloud-blocks/issues/40)) ([f947b80](https://github.com/leighton-digital/cloud-blocks/commit/f947b80ad0a7e05af103744b5084d7e3fa73c8c4))
+
 ## [1.2.2](https://github.com/leighton-digital/cloud-blocks/compare/v1.2.1...v1.2.2) (2025-11-13)
 
 

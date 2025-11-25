@@ -7,7 +7,7 @@ permissions:
 
 jobs:
   dependabot:
-    name: 🛬 Auto-approve and enable auto-merge on Dependabot PR
+    name: 🛬 Auto-approve Dependabot PR
     runs-on: ubuntu-latest
     if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'leighton-digital/cloud-blocks'
     steps:
@@ -21,10 +21,12 @@ jobs:
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
           GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: 🛬 Enable auto-merge for this Dependabot PR
-        # Auto-merge only for non-major updates
-        if: steps.metadata.outputs.update-type != 'version-update:semver-major'
-        run: gh pr merge --auto --merge "$PR_URL"
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # Temporarily disabled due to the Shai-Hulud npm supply-chain attack.
+      # See: https://about.gitlab.com/blog/gitlab-discovers-widespread-npm-supply-chain-attack/
+      # - name: 🛬 Enable auto-merge for this Dependabot PR
+      #   # Auto-merge only for non-major updates
+      #   if: steps.metadata.outputs.update-type != 'version-update:semver-major'
+      #   run: gh pr merge --auto --merge "$PR_URL"
+      #   env:
+      #     PR_URL: ${{github.event.pull_request.html_url}}
+      #     GH_TOKEN: ${{secrets.GITHUB_TOKEN}}

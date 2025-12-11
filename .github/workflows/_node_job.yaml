@@ -14,6 +14,8 @@ on:
 
 jobs:
   node-job:
+    permissions:
+      contents: read
     name: ${{inputs.name}}
     runs-on: ubuntu-latest
     timeout-minutes: ${{inputs.timeout-minutes}}

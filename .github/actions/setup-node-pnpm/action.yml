@@ -1,36 +1,11 @@
 name: 'Setup Node.js and pnpm'
 description: 'Setup Node.js, pnpm, and install dependencies with caching'
 
-outputs:
-  cache-key:
-    description: 'The cache key used for node_modules'
-    value: ${{ steps.compute-key.outputs.key }}
-
 runs:
   using: 'composite'
   steps:
-    - name: 📦 Setup pnpm
+    - name: 📦 Setup pnpm and install
       uses: pnpm/action-setup@v4
       with:
-        run_install: false
-    - name: 📦 Setup Node.js
-      uses: actions/setup-node@v5
-      with:
-        node-version-file: "package.json"
-        cache: pnpm
-        cache-dependency-path: |
-          pnpm-lock.yaml
-          **/pnpm-lock.yaml
-        registry-url: 'https://registry.npmjs.org'
-    - name: 💾 Restore node_modules and store
-      id: restore
-      uses: actions/cache@v4
-      with:
-        path: |
-          node_modules
-          **/node_modules
-          ~/.pnpm-store
-        key: node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
-    - name: 📤 Install (first run only)
-      shell: bash
-      run: pnpm install --frozen-lockfile
+        cache: true
+        run_install: true

@@ -27,7 +27,7 @@ importers:
   .:
     dependencies:
       aws-cdk-lib:
-        specifier: '>=2.189.1'
+        specifier: '>=2.182.0'
         version: 2.232.1(constructs@10.0.5)
       cdk-monitoring-constructs:
         specifier: '>=9.3.0'

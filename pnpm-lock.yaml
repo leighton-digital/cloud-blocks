@@ -4,24 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-catalogs:
-  default:
-    '@docusaurus/core':
-      specifier: 3.9.2
-      version: 3.9.2
-    '@docusaurus/module-type-aliases':
-      specifier: 3.9.2
-      version: 3.9.2
-    '@docusaurus/preset-classic':
-      specifier: 3.9.2
-      version: 3.9.2
-    '@docusaurus/tsconfig':
-      specifier: 3.9.2
-      version: 3.9.2
-    '@docusaurus/types':
-      specifier: 3.9.2
-      version: 3.9.2
-
 importers:
 
   .:

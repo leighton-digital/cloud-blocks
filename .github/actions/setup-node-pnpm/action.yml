@@ -11,8 +11,10 @@ runs:
   steps:
     - name: 📦 Setup pnpm
       uses: pnpm/action-setup@v4
+      with:
+        run_install: false
     - name: 📦 Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v5
       with:
         node-version-file: "package.json"
         cache: pnpm
@@ -20,33 +22,15 @@ runs:
           pnpm-lock.yaml
           **/pnpm-lock.yaml
         registry-url: 'https://registry.npmjs.org'
-    - name: 💾 Compute cache key
-      id: compute-key
-      shell: bash
-      run: |
-        echo "key=${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}" >> "$GITHUB_OUTPUT"
-    # Try to restore node_modules + pnpm store; if first run, this will miss
     - name: 💾 Restore node_modules and store
       id: restore
-      uses: actions/cache/restore@v4
+      uses: actions/cache@v4
       with:
         path: |
           node_modules
           **/node_modules
           ~/.pnpm-store
-        key: node-modules-${{ steps.compute-key.outputs.key }}
-    # Only install on cache miss
+        key: node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
     - name: 📤 Install (first run only)
-      if: steps.restore.outputs.cache-hit != 'true'
       shell: bash
       run: pnpm install --frozen-lockfile
-    # Save cache so other jobs in this workflow run can use it
-    - name: 💾 Save node_modules and store cache
-      if: steps.restore.outputs.cache-hit != 'true'
-      uses: actions/cache/save@v4
-      with:
-        path: |
-          node_modules
-          **/node_modules
-          ~/.pnpm-store
-        key: node-modules-${{ steps.compute-key.outputs.key }}

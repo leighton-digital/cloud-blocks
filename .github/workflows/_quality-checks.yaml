@@ -8,28 +8,28 @@ on:
 jobs:
 
   linting:
-    name: 🧹  Linting
     uses: ./.github/workflows/_node_job.yaml
     with:
+      name: 🧹  Linting
       run: pnpm lint
 
   typeCheck:
-    name: 🔍  Type Check
     uses: ./.github/workflows/_node_job.yaml
     with:
+      name: 🔍  Type Check
       run: pnpm typecheck
 
   unitTest:
-    name: 🧪  Unit Test
     uses: ./.github/workflows/_node_job.yaml
     with:
+      name: 🧪  Unit Tests
       run: pnpm test
       timeout-minutes: 15
 
   unusedDependencies:
-    name: 📦  Unused Dependencies Check
     uses: ./.github/workflows/_node_job.yaml
     with:
+      name: 📦  Unused Dependencies Check
       run: pnpx knip --include dependencies
 
   cdkSynth:

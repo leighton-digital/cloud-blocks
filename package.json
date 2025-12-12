@@ -28,8 +28,8 @@
     "url": "https://github.com/leighton-digital/cloud-blocksp/issues"
   },
   "engines": {
-    "node": ">=22.11",
-    "pnpm": ">=10.15.0"
+    "node": "^22.*",
+    "pnpm": "10.15.0"
   },
   "publishConfig": {
     "tag": "latest",
@@ -91,10 +91,10 @@
     "typescript": "5.9.3"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "2.182.0",
-    "cdk-monitoring-constructs": "9.3.0",
-    "cdk-nag": "2.35.62",
-    "constructs": "10.0.5"
+    "aws-cdk-lib": ">=2.182.0",
+    "cdk-monitoring-constructs": ">=9.3.0",
+    "cdk-nag": ">=2.35.0",
+    "constructs": ">=10.0.0"
   },
   "dependencies": {
     "zod": "4.1.12"

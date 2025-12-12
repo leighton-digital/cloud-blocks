@@ -1,9 +1,6 @@
 on:
   workflow_call:
     inputs:
-      name:
-        type: string
-        required: true
       run:
         type: string
         required: true
@@ -16,7 +13,6 @@ jobs:
   node-job:
     permissions:
       contents: read
-    name: ${{inputs.name}}
     runs-on: ubuntu-24.04
     timeout-minutes: ${{inputs.timeout-minutes}}
     env:

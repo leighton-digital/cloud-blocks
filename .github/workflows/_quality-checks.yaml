@@ -30,7 +30,7 @@ jobs:
     uses: ./.github/workflows/_node_job.yaml
     with:
       name: 📦  Unused Dependencies Check
-      run: pnpm dlx knip --include dependencies
+      run: pnpx knip --include dependencies
 
   cdkSynth:
     name: ☁️  CDK Synth (${{ matrix.cdk-version }})

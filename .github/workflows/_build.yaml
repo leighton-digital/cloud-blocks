@@ -24,7 +24,7 @@ jobs:
         run: pnpm run build
 
       - name: 💾 Cache dist directory
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         with:
           path: dist
           key: dist-${{ github.sha }}

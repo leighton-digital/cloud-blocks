@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/leighton-digital/cloud-blocks/compare/v1.2.3...v1.3.0) (2025-12-11)
+
+
+### Features
+
+* fix duplicated permissions clause ([dbf1d10](https://github.com/leighton-digital/cloud-blocks/commit/dbf1d1058dfa0c09277deadfc9dd6e7f93babb5c))
+
 ## [1.2.3](https://github.com/leighton-digital/cloud-blocks/compare/v1.2.2...v1.2.3) (2025-11-25)
 
 

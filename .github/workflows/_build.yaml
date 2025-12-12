@@ -12,7 +12,7 @@ on:
 jobs:
   build-package:
     name: 🏗️ Build Package
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     outputs:
       dist-cache-key: dist-${{ github.sha }}
@@ -31,7 +31,7 @@ jobs:
 
   build-docs:
     name: 📖 Build Documentation
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v6

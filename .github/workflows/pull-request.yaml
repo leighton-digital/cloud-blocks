@@ -10,10 +10,21 @@ permissions:
   contents: write
 
 jobs:
+  install-dependencies:
+    name: 💾 Install Dependencies
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v6
+      - name: Install Dependencies and pre-cache
+        uses: ./.github/actions/setup-node-pnpm
 
   quality-checks:
+    needs: install-dependencies
     uses: ./.github/workflows/_quality-checks.yaml
 
   build:
-    needs: quality-checks
+    needs:
+      - install-dependencies
+      - quality-checks
     uses: ./.github/workflows/_build.yaml

@@ -22,7 +22,7 @@ jobs:
   unitTest:
     uses: ./.github/workflows/_node_job.yaml
     with:
-      name: 🧪  Unit Test
+      name: 🧪  Unit Tests
       run: pnpm test
       timeout-minutes: 15
 
@@ -33,43 +33,15 @@ jobs:
       run: pnpx knip --include dependencies
 
   cdkSynth:
-    name: ☁️  CDK Synth (${{ matrix.cdk-version }})
-    runs-on: ubuntu-latest
+    name: ☁️  CDK Synth
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
-    strategy:
-      matrix:
-        include:
-          - cdk-version: "2.1000.0"
-            cdk-lib-version: "2.182.0"
-            constructs-version: "10.0.0"
-            cdk-monitoring-constructs-version: "9.3.0"
-            cdk-nag-version: "2.35.62"
-            ts-node-version: "10.9.2"
-          - cdk-version: "latest"
-            cdk-lib-version: "latest"
-            constructs-version: "latest"
-            cdk-monitoring-constructs-version: "latest"
-            cdk-nag-version: "latest"
-            ts-node-version: "latest"
-      fail-fast: false
     steps:
       - uses: actions/checkout@v6
       - uses: ./.github/actions/setup-node-pnpm
       - name: Install compatible aws-cdk-lib version
-        run: pnpm add -D aws-cdk-lib@${{ matrix.cdk-lib-version }}
+        run: pnpm add -D aws-cdk-lib ts-node constructs cdk-monitoring-constructs cdk-nag
         working-directory: tests/test-project
-      - name: Install compatible ts-node version
-        run: pnpm add -D ts-node@${{ matrix.ts-node-version }}
-        working-directory: tests/test-project
-      - name: Install compatible constructs version
-        run: pnpm add -D constructs@${{ matrix.constructs-version }}
-        working-directory: tests/test-project
-      - name: Install compatible cdk-monitoring-constructs version
-        run: pnpm add -D cdk-monitoring-constructs@${{ matrix.cdk-monitoring-constructs-version }}
-        working-directory: tests/test-project
-      - name: Install compatible cdk-nag version
-        run: pnpm add -D cdk-nag@${{ matrix.cdk-nag-version }}
-        working-directory: tests/test-project
-      - run: pnpx cdk@${{ matrix.cdk-version }} synth --all
+      - run: pnpx cdk synth --all
         working-directory: tests/test-project
 

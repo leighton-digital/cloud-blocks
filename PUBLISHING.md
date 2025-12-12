@@ -207,13 +207,13 @@ The **release** job runs these before publishing.
 View the package on npm:
 
 ```bash
-npm view @leighton-digital/api-gateway-cloudfront-distribution
+pnpm view @leighton-digital/api-gateway-cloudfront-distribution
 ```
 
 Check available versions:
 
 ```bash
-npm view @leighton-digital/api-gateway-cloudfront-distribution versions
+pnpm view @leighton-digital/api-gateway-cloudfront-distribution versions
 ```
 
 ---

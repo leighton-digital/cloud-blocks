@@ -2,7 +2,6 @@
   "name": "docs-site",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@10.15.0",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
@@ -40,8 +39,5 @@
       "last 3 firefox version",
       "last 5 safari version"
     ]
-  },
-  "engines": {
-    "node": ">=18.0"
   }
 }

@@ -26,7 +26,7 @@ jobs:
       - uses: ./.github/actions/setup-node-pnpm
 
       - name: 💾 Restore dist directory
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: dist
           key: ${{ inputs.dist-cache-key }}

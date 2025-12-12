@@ -103,6 +103,16 @@ This project uses several tools to maintain code quality and consistency:
   ```bash
   pnpm spell:check
   ```
+* **Check for unused dependencies (Knip)**
+
+  ```bash
+  pnpx knip --include dependencies
+  ```
+* **Remove unused dependencies (Knip)**
+
+  ```bash
+  pnpx knip --fix
+  ```
 * **Type-check**
 
   ```bash

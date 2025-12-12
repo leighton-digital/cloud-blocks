@@ -14,6 +14,8 @@ jobs:
   install-dependencies:
     runs-on: ubuntu-24.04
     steps:
+      - name: checkout
+        uses: actions/checkout@v6
       - name: Install Dependencies and pre-cache
         uses: ./.github/actions/setup-node-pnpm
 

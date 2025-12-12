@@ -91,10 +91,10 @@
     "typescript": "5.9.3"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "2.182.0",
-    "cdk-monitoring-constructs": "9.3.0",
-    "cdk-nag": "2.35.62",
-    "constructs": "10.0.5"
+    "aws-cdk-lib": ">=2.1000.0",
+    "cdk-monitoring-constructs": ">=9.3.0",
+    "cdk-nag": ">=2.35.62",
+    "constructs": ">=10.0.5"
   },
   "dependencies": {
     "zod": "4.1.12"

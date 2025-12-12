@@ -40,7 +40,7 @@ jobs:
       matrix:
         include:
           - cdk-version: "2.1000.0"
-            cdk-lib-version: "2.182.0"
+            cdk-lib-version: "2.189.1"
             constructs-version: "10.0.0"
             cdk-monitoring-constructs-version: "9.3.0"
             cdk-nag-version: "2.35.62"

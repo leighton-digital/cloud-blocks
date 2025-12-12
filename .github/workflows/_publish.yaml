@@ -46,10 +46,10 @@ jobs:
         run: |
           if [ "${{ inputs.dry-run }}" = "true" ]; then
             echo "🔍 Running semantic-release in dry-run mode"
-            npx semantic-release --dry-run
+            pnpx semantic-release --dry-run
           else
             echo "🚀 Running semantic-release"
-            npx semantic-release
+            pnpx semantic-release
           fi
 
       - name:  Deploy Documentation

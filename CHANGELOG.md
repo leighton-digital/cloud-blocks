@@ -1,3 +1,12 @@
+# [1.4.0](https://github.com/leighton-digital/cloud-blocks/compare/v1.3.0...v1.4.0) (2025-12-12)
+
+
+### Features
+
+* change security markdown and enable knip check ([1f15585](https://github.com/leighton-digital/cloud-blocks/commit/1f15585af018a6745cc9ce8cbedf6b4699baf8ee))
+* ensure ts-node is available for cdk synth ([a1bd7c3](https://github.com/leighton-digital/cloud-blocks/commit/a1bd7c35768ea04a4fd59db878b26310cf381381))
+* update pnpm lock ([2ea04a1](https://github.com/leighton-digital/cloud-blocks/commit/2ea04a131cb6a192ebfff3ae1bfcb091cc4e82d9))
+
 # [1.3.0](https://github.com/leighton-digital/cloud-blocks/compare/v1.2.3...v1.3.0) (2025-12-11)
 
 

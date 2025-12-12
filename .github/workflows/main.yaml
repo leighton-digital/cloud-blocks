@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   install-dependencies:
+    name: 💾 Install Dependencies
     runs-on: ubuntu-24.04
     steps:
       - name: checkout

@@ -34,13 +34,13 @@ Use in your CDK app:
 
 ```ts
 import * as cdk from "aws-cdk-lib";
-import { ApiGatewayCloudFrontDistribution } from "@leighton-digital/cloud-blocks";
+import { ApiCloudFrontDistribution } from "@leighton-digital/cloud-blocks";
 
 export class MyStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    new ApiGatewayCloudFrontDistribution(this, "ApiGwCdn", {
+    new ApiCloudFrontDistribution(this, "ApiGwCdn", {
       domainName: "example.com"
     });
   }
@@ -168,6 +168,55 @@ This approach ensures that:
 - ✅ CDK synthesis succeeds
 - ✅ CloudFormation templates are generated properly
 - ✅ Real-world usage patterns work as expected
+
+---
+
+## API Documentation
+
+Comprehensive API documentation is available at:
+
+**[📚 Cloud Blocks API Reference](https://leighton-digital.github.io/cloud-blocks/)**
+
+The API documentation is automatically generated from TypeScript source code and includes:
+- Complete API signatures for all constructs, types, and utilities
+- Detailed parameter descriptions and return types
+- Type definitions and interfaces
+- Code examples and usage patterns
+
+---
+
+## Examples
+
+The [`tests/test-project`](tests/test-project) directory contains working examples of all constructs in a real CDK application. These examples demonstrate best practices and can be used as a reference for your own implementations.
+
+### Construct Examples
+
+Each construct has a corresponding example file showing real-world usage:
+
+- **[ApiCloudFrontDistribution](tests/test-project/lib/api-distribution-nested-stack.ts)** - API Gateway with CloudFront distribution, custom domain, SSL certificate, and monitoring
+- **[ProgressiveLambda](tests/test-project/lib/progressive-lambda-nested-stack.ts)** - Lambda function with progressive deployment using AWS CodeDeploy
+- **[RestApi](tests/test-project/lib/rest-api-nested-stack.ts)** - REST API Gateway with CloudWatch logging, CORS configuration, and observability
+- **[IdempotencyTable](tests/test-project/lib/idempotency-table-nested-stack.ts)** - DynamoDB table optimized for idempotency patterns
+- **[CloudWatchDashboard](tests/test-project/lib/cloudwatch-dashboard-nested-stack.ts)** - Centralized monitoring dashboard with custom widgets
+- **[CustomStack](tests/test-project/lib/test-project-stack.ts)** - Extended Stack with built-in tagging, dashboard creation, and best practices
+
+### Running the Examples
+
+To run the example project locally:
+
+```bash
+# Build the package
+pnpm run build
+
+# Navigate to the test project
+cd tests/test-project
+
+# Synthesize the CloudFormation templates
+pnpx cdk synth --all
+
+# View the generated templates
+ls cdk.out/
+```
 
 ---
 

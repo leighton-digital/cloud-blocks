@@ -26,10 +26,10 @@ The constructs in this directory serve as **building blocks** for AWS CDK applic
 Each construct is designed to be imported and used directly in your CDK applications:
 
 ```typescript
-import { ApiGatewayCloudFrontDistribution } from '@leighton-digital/cloud-blocks';
+import { ApiCloudFrontDistribution } from '@leighton-digital/cloud-blocks';
 
 // Use in your stack
-const apiDistribution = new ApiGatewayCloudFrontDistribution(this, 'MyAPI', {
+const apiDistribution = new ApiCloudFrontDistribution(this, 'MyAPI', {
   // configuration options
 });
 ```

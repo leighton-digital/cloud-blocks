@@ -33,7 +33,7 @@ A collection of **AWS CDK infrastructure utilities** for **consistent resource n
 ### Basic Resource Naming
 
 ```ts
-import { generateResourceName } from '@leighton-digital/cdk-ts-core/infra';
+import { generateResourceName } from '@leighton-digital/cloud-blocks';
 
 // Basic resource naming
 const tableName = generateResourceName('prod', 'orders', 'table');
@@ -50,7 +50,7 @@ const functionName = generateResourceName('staging', 'api', 'function', 'auth', 
 ### S3 Bucket Naming
 
 ```ts
-import { generateS3BucketName } from '@leighton-digital/cdk-ts-core/infra';
+import { generateS3BucketName } from '@leighton-digital/cloud-blocks';
 
 // Basic S3 bucket
 const bucketName = generateS3BucketName('prod', 'assets');
@@ -73,7 +73,7 @@ import { Table } from 'aws-cdk-lib/aws-dynamodb';
 import {
   generateResourceName,
   getRemovalPolicyFromStage
-} from '@leighton-digital/cdk-ts-core/infra';
+} from '@leighton-digital/cloud-blocks';
 
 const stage = 'prod'; // or process.env.STAGE
 const tableName = generateResourceName(stage, 'users', 'table');
@@ -89,7 +89,7 @@ const table = new Table(this, 'UsersTable', {
 ### Stage Normalisation
 
 ```ts
-import { getStage } from '@leighton-digital/cdk-ts-core/infra';
+import { getStage } from '@leighton-digital/cloud-blocks';
 
 // Known stages are normalised
 const prodStage = getStage('prod');        // 'prod'
@@ -113,7 +113,7 @@ import {
   generateS3BucketName,
   getRemovalPolicyFromStage,
   getStage
-} from '@leighton-digital/cdk-ts-core/infra';
+} from '@leighton-digital/cloud-blocks';
 
 interface MyStackProps extends StackProps {
   stage: string;
@@ -169,8 +169,8 @@ new MyApplicationStack(app, `CustomerPortalStack-${getStage(stage)}`, {
 ### Multi-Region Resource Naming
 
 ```ts
-import { generateResourceName, generateS3BucketName } from '@leighton-digital/cdk-ts-core/infra';
-import { Region } from '@leighton-digital/cdk-ts-core/types';
+import { generateResourceName, generateS3BucketName } from '@leighton-digital/cloud-blocks';
+import { Region } from '@leighton-digital/cloud-blocks';
 
 // Primary region resources
 const primaryTable = generateResourceName('prod', 'orders', 'table', undefined, Region.virginia);
@@ -194,7 +194,7 @@ import {
   generateResourceName,
   getRemovalPolicyFromStage,
   getStage
-} from '@leighton-digital/cdk-ts-core/infra';
+} from '@leighton-digital/cloud-blocks';
 
 function createEnvironmentConfig(rawStage: string, service: string) {
   const stage = getStage(rawStage);
@@ -271,7 +271,7 @@ generateS3BucketName('prod', 'backup', 'daily', 'eu-west-1')
 ### Stage Normalisation
 
 ```ts
-import { getStage } from '@leighton-digital/cdk-ts-core/infra';
+import { getStage } from '@leighton-digital/cloud-blocks';
 
 // Known stages (from Stage enum)
 getStage('prod')     // → 'prod'
@@ -287,7 +287,7 @@ getStage('hotfix-login')  // → 'hotfix-login'
 ### Removal Policies by Environment
 
 ```ts
-import { getRemovalPolicyFromStage } from '@leighton-digital/cdk-ts-core/infra';
+import { getRemovalPolicyFromStage } from '@leighton-digital/cloud-blocks';
 import { RemovalPolicy } from 'aws-cdk-lib';
 
 // Production and staging: RETAIN (prevent accidental deletion)

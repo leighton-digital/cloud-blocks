@@ -190,9 +190,20 @@ Creates a new RestApi construct with comprehensive API Gateway configuration inc
 
 * `api: apigw.RestApi` - The underlying AWS API Gateway REST API instance. Use this to add resources, methods, and integrations.
 
-#### ApiProps Interface
+#### RestApiProps Interface
 
 Configuration properties for the RestApi construct. The interface extends all `RestApiProps` except `description` and `deploy`, giving you access to the full AWS CDK RestApi configuration while providing intelligent defaults.
+
+This interface is exported and can be imported for type-safe configuration:
+
+```ts
+import { RestApi, type RestApiProps } from '@leighton-digital/cloud-blocks';
+
+function createApi(props: RestApiProps): RestApi {
+  // Type-safe API creation
+  return new RestApi(this, 'MyApi', props);
+}
+```
 
 **Required Properties:**
 * `stageName: string` - The stage name for API deployment (e.g., 'dev', 'staging', 'prod')

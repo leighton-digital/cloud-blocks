@@ -51,7 +51,7 @@ describe('ProgressiveLambda', () => {
         };
       `),
       handler: 'index.handler',
-      runtime: cdk.aws_lambda.Runtime.NODEJS_22_X,
+      runtime: cdk.aws_lambda.Runtime.NODEJS_24_X,
     };
 
     progressiveLambda = new ProgressiveLambda(
@@ -102,7 +102,7 @@ describe('ProgressiveLambda', () => {
 
       // Lambda function
       template.hasResourceProperties('AWS::Lambda::Function', {
-        Runtime: 'nodejs22.x',
+        Runtime: 'nodejs24.x',
         Handler: 'index.handler',
         TracingConfig: {
           Mode: 'Active',

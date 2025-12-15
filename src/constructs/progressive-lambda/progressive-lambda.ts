@@ -416,7 +416,7 @@ export class ProgressiveLambda extends Construct {
     // Configure Lambda function with secure defaults
     const lambdaProps = {
       // Security: Use latest Node.js runtime for patches and features (AwsSolutions-L1)
-      runtime: lambda.Runtime.NODEJS_22_X,
+      runtime: lambda.Runtime.NODEJS_24_X,
       // Observability: Enable X-Ray tracing for request tracking and debugging
       tracing: lambda.Tracing.ACTIVE,
       // Performance: Set reasonable defaults if not provided by user

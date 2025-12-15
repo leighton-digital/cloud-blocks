@@ -42,9 +42,9 @@ A CDK construct that provisions an **Amazon CloudFront** distribution in front o
 ## Install
 
 ```bash
-npm i aws-cdk-lib constructs cdk-nag cdk-monitoring-constructs
+pnpm i aws-cdk-lib constructs cdk-nag cdk-monitoring-constructs
 # For tests
-npm i -D jest ts-jest @types/jest
+pnpm i -D jest ts-jest @types/jest
 ```
 
 > In a monorepo, ensure package test scripts invoke Jest with your **ts-jest** config (e.g. `jest -c ../../jest.config.ts`).
@@ -184,7 +184,7 @@ This package includes Jest unit tests with **cdk-nag** integration.
 ### Run
 
 ```bash
-npm test
+pnpm test
 # or, in a monorepo with Turbo:
 # turbo run test
 ```

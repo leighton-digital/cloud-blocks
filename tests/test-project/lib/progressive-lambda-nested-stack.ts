@@ -51,7 +51,7 @@ export class ProgressiveLambdaNestedStack extends cdk.NestedStack {
         };
       `),
       handler: 'index.handler',
-      runtime: lambda.Runtime.NODEJS_22_X,
+      runtime: lambda.Runtime.NODEJS_24_X,
       timeout: cdk.Duration.seconds(30),
       memorySize: 256,
 

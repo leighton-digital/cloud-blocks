@@ -246,7 +246,7 @@ export const handler = async (event: any) => {
 | `metricSuccessNameTitle` | `string` | `${id} - Success Operation` | Display title for success metric |
 | `metricErrorNameTitle` | `string` | `${id} - Error Operation` | Display title for error metric |
 | `alarmConfiguration` | `object` | See defaults below | Custom CloudWatch alarm settings |
-| `runtime` | `Runtime` | `NODEJS_22_X` | Lambda runtime version |
+| `runtime` | `Runtime` | `NODEJS_24_X` | Lambda runtime version |
 | `timeout` | `Duration` | `30 seconds` | Function timeout |
 | `memorySize` | `number` | `256` | Memory allocation in MB |
 | `tracing` | `Tracing` | `ACTIVE` | X-Ray tracing configuration |

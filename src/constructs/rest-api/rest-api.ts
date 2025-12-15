@@ -36,7 +36,8 @@ import { generateResourceName } from '../../utils';
  * });
  * ```
  */
-interface ApiProps extends Omit<apigw.RestApiProps, 'description' | 'deploy'> {
+export interface RestApiProps
+  extends Omit<apigw.RestApiProps, 'description' | 'deploy'> {
   /**
    * The stage name for the API deployment.
    *
@@ -238,7 +239,7 @@ export class RestApi extends Construct {
    * - A deployment stage named 'api' with logging and tracing enabled
    * - A CloudWatch role for API Gateway service logging
    */
-  constructor(scope: Construct, id: string, props: ApiProps) {
+  constructor(scope: Construct, id: string, props: RestApiProps) {
     super(scope, id);
 
     const corsOptions: apigw.CorsOptions | undefined =

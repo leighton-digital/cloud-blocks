@@ -34,7 +34,7 @@ A collection of **AWS CDK Aspects** for **infrastructure compliance and tagging 
 ```ts
 import { App, Stack } from 'aws-cdk-lib';
 import { Aspects } from 'aws-cdk-lib';
-import { RequiredTagsChecker } from '@leighton-digital/cdk-ts-core/aspects';
+import { RequiredTagsChecker } from '@leighton-digital/cloud-blocks';
 
 const app = new App();
 const stack = new Stack(app, 'MyStack');
@@ -52,7 +52,7 @@ Aspects.of(app).add(new RequiredTagsChecker(requiredTags));
 
 ```ts
 import { App, Stack } from 'aws-cdk-lib';
-import { addTagsToStack } from '@leighton-digital/cdk-ts-core/aspects';
+import { addTagsToStack } from '@leighton-digital/cloud-blocks';
 
 const app = new App();
 const stack = new Stack(app, 'MyStack');
@@ -79,8 +79,8 @@ import { Bucket } from 'aws-cdk-lib/aws-s3';
 import {
   addTagsToStack,
   RequiredTagsChecker
-} from '@leighton-digital/cdk-ts-core/aspects';
-import type { Tags } from '@leighton-digital/cdk-ts-core/types';
+} from '@leighton-digital/cloud-blocks';
+import type { Tags } from '@leighton-digital/cloud-blocks';
 
 // Define organisation-wide required tags
 const organizationRequiredTags = [
@@ -132,8 +132,8 @@ app.synth();
 
 ```ts
 import { App, Stack } from 'aws-cdk-lib';
-import { addTagsToStack } from '@leighton-digital/cdk-ts-core/aspects';
-import { getStage } from '@leighton-digital/cdk-ts-core/infra';
+import { addTagsToStack } from '@leighton-digital/cloud-blocks';
+import { getStage } from '@leighton-digital/cloud-blocks';
 
 function createEnvironmentTags(stage: string): Tags {
   const baseTags = {
@@ -190,7 +190,7 @@ import { Aspects } from 'aws-cdk-lib';
 import {
   addTagsToStack,
   RequiredTagsChecker
-} from '@leighton-digital/cdk-ts-core/aspects';
+} from '@leighton-digital/cloud-blocks';
 
 class DatabaseStack extends Stack {
   constructor(scope: App, id: string) {

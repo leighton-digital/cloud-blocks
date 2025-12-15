@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/leighton-digital/cloud-blocks/compare/v1.4.0...v1.5.0) (2025-12-15)
+
+
+### Features
+
+* improved docs for latest optimisations ([9a1eb43](https://github.com/leighton-digital/cloud-blocks/commit/9a1eb43b7ec51b13b54875221a62d6fc7203f001))
+
 # [1.4.0](https://github.com/leighton-digital/cloud-blocks/compare/v1.3.0...v1.4.0) (2025-12-12)
 
 

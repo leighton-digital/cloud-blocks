@@ -98,6 +98,6 @@
     "constructs": ">=10.0.0"
   },
   "dependencies": {
-    "zod": "4.1.12"
+    "zod": "4.3.6"
   }
 }

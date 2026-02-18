@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/leighton-digital/cloud-blocks/compare/v1.5.0...v1.6.0) (2026-02-18)
+
+
+### Features
+
+* make dependabot commit with bumpable commit messages ([30979f6](https://github.com/leighton-digital/cloud-blocks/commit/30979f6b77a32070a883c0d5559f180c41e4d1a6))
+
 # [1.5.0](https://github.com/leighton-digital/cloud-blocks/compare/v1.4.0...v1.5.0) (2025-12-15)
 
 

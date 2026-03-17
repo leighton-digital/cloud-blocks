@@ -70,10 +70,10 @@
     }
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.4",
+    "@biomejs/biome": "2.4.5",
     "@commitlint/cli": "20.4.2",
     "@commitlint/config-conventional": "20.4.2",
-    "@cspell/dict-en-gb": "5.0.23",
+    "@cspell/dict-en-gb": "5.0.24",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
     "@swc/jest": "0.2.39",

@@ -5,7 +5,7 @@ catalog:
   "@docusaurus/core": 3.9.2
   "@docusaurus/module-type-aliases": 3.10.0
   "@docusaurus/preset-classic": 3.9.2
-  "@docusaurus/theme-classic": 3.9.2
+  "@docusaurus/theme-classic": 3.10.0
   "@docusaurus/theme-mermaid": 3.9.2
   "@docusaurus/tsconfig": 3.10.0
   "@docusaurus/types": 3.9.2

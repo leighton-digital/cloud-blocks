@@ -87,7 +87,7 @@
     "lefthook": "2.1.5",
     "plop": "4.0.5",
     "semantic-release": "25.0.3",
-    "typedoc": "0.28.18",
+    "typedoc": "0.28.19",
     "typedoc-plugin-markdown": "4.11.0",
     "typescript": "5.9.3"
   },

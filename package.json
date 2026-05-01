@@ -84,7 +84,7 @@
     "cspell": "9.8.0",
     "cz-conventional-changelog": "3.3.0",
     "jest": "30.3.0",
-    "lefthook": "2.1.5",
+    "lefthook": "2.1.6",
     "plop": "4.0.5",
     "semantic-release": "25.0.3",
     "typedoc": "0.28.19",

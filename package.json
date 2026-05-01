@@ -89,7 +89,7 @@
     "semantic-release": "25.0.3",
     "typedoc": "0.28.19",
     "typedoc-plugin-markdown": "4.11.0",
-    "typescript": "5.9.3"
+    "typescript": "6.0.2"
   },
   "peerDependencies": {
     "aws-cdk-lib": ">=2.189.1",

@@ -2,10 +2,10 @@ packages:
   - .
   - docs-site
 catalog:
-  "@docusaurus/core": 3.10.0
-  "@docusaurus/module-type-aliases": 3.10.0
-  "@docusaurus/preset-classic": 3.10.0
+  "@docusaurus/core": 3.10.1
+  "@docusaurus/module-type-aliases": 3.10.1
+  "@docusaurus/preset-classic": 3.10.1
   "@docusaurus/theme-classic": 3.10.0
-  "@docusaurus/theme-mermaid": 3.10.0
-  "@docusaurus/tsconfig": 3.10.0
-  "@docusaurus/types": 3.10.0
+  "@docusaurus/theme-mermaid": 3.10.1
+  "@docusaurus/tsconfig": 3.10.1
+  "@docusaurus/types": 3.10.1

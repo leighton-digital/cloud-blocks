@@ -71,7 +71,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.0",
-    "@commitlint/cli": "20.5.3",
+    "@commitlint/cli": "21.0.2",
     "@commitlint/config-conventional": "20.5.3",
     "@cspell/dict-en-gb": "5.0.29",
     "@semantic-release/changelog": "6.0.3",

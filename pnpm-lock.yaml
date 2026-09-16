@@ -36,8 +36,8 @@ importers:
         specifier: '>=9.3.0'
         version: 9.3.0(aws-cdk-lib@2.232.1(constructs@10.0.5))(constructs@10.0.5)
       cdk-nag:
-        specifier: '>=2.35.0 <3'
-        version: 2.35.62(aws-cdk-lib@2.232.1(constructs@10.0.5))(constructs@10.0.5)
+        specifier: 2.35.0
+        version: 2.35.0(aws-cdk-lib@2.232.1(constructs@10.0.5))(constructs@10.0.5)
       constructs:
         specifier: '>=10.0.0'
         version: 10.0.5
@@ -3500,8 +3500,8 @@ packages:
       aws-cdk-lib: ^2.160.0
       constructs: ^10.0.5
 
-  cdk-nag@2.35.62:
-    resolution: {integrity: sha512-qDx8p1XJLLc8rHfKRHiJWbLZz1c4IrhsFONseUAEOFVghfwSf7WEND2ZleLwvPQc+vPUTdXABE7mEx2YSyV+Qg==}
+  cdk-nag@2.35.0:
+    resolution: {integrity: sha512-jH2cff8abe6MF28N3qDOP97+vbcYZMjoFZutipD+rRtqm2uk7BoStayInUt+s9L15mKLZq6Z/8YELIzy+rDLIQ==}
     peerDependencies:
       aws-cdk-lib: ^2.156.0
       constructs: ^10.0.5
@@ -13264,7 +13264,7 @@ snapshots:
       aws-cdk-lib: 2.232.1(constructs@10.0.5)
       constructs: 10.0.5
 
-  cdk-nag@2.35.62(aws-cdk-lib@2.232.1(constructs@10.0.5))(constructs@10.0.5):
+  cdk-nag@2.35.0(aws-cdk-lib@2.232.1(constructs@10.0.5))(constructs@10.0.5):
     dependencies:
       aws-cdk-lib: 2.232.1(constructs@10.0.5)
       constructs: 10.0.5

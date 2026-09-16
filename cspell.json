@@ -36,6 +36,7 @@
     "CONTRIBUTORS.md",
     ".git/**",
     "docs-site/build/**",
+    "docs/reference/**",
     "tsconfig.tsbuildinfo"
   ],
   "import": [

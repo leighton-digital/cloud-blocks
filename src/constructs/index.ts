@@ -4,3 +4,4 @@ export * from './custom-stack';
 export * from './idempotency-table';
 export * from './progressive-lambda';
 export * from './rest-api';
+export * from './waf-ip-allow-list';

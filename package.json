@@ -74,6 +74,7 @@
     "@commitlint/cli": "20.5.3",
     "@commitlint/config-conventional": "20.5.3",
     "@cspell/dict-en-gb": "5.0.29",
+    "@jest/globals": "30.5.1",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
     "@swc/jest": "0.2.39",

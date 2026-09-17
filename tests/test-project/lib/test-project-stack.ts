@@ -8,6 +8,7 @@ import { CloudWatchDashboardNestedStack } from './cloudwatch-dashboard-nested-st
 import { IdempotencyTableNestedStack } from './idempotency-table-nested-stack';
 import { ProgressiveLambdaNestedStack } from './progressive-lambda-nested-stack';
 import { RestApiNestedStack } from './rest-api-nested-stack';
+import { WafIpAllowListNestedStack } from './waf-ip-allow-list-nested-stack';
 
 export class TestProjectStack extends CustomStack {
   public readonly apiDistributionStack: ApiDistributionNestedStack;
@@ -15,6 +16,7 @@ export class TestProjectStack extends CustomStack {
   public readonly idempotencyTableStack: IdempotencyTableNestedStack;
   public readonly cloudwatchDashboardStack: CloudWatchDashboardNestedStack;
   public readonly progressiveLambdaStack: ProgressiveLambdaNestedStack;
+  public readonly wafIpAllowListStack: WafIpAllowListNestedStack;
 
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, {
@@ -74,6 +76,12 @@ This dashboard provides comprehensive monitoring for the test project, including
     this.progressiveLambdaStack = new ProgressiveLambdaNestedStack(
       this,
       'ProgressiveLambdaStack',
+    );
+
+    // Create the WAF IP Allow List using a nested stack
+    this.wafIpAllowListStack = new WafIpAllowListNestedStack(
+      this,
+      'WafIpAllowListStack',
     );
 
     // Add monitoring widgets to the centralized dashboard

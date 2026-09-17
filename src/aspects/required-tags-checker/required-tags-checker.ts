@@ -34,7 +34,6 @@ export class RequiredTagsChecker implements IAspect {
    * @param node - The construct being visited.
    */
   public visit(node: IConstruct): void {
-
     if (!(node instanceof Stack)) return;
 
     if (!node.tags.hasTags()) {

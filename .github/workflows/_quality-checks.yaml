@@ -40,7 +40,7 @@ jobs:
       - uses: actions/checkout@v6
       - uses: ./.github/actions/setup-node-pnpm
       - name: Install compatible aws-cdk-lib version
-        run: pnpm add -D aws-cdk-lib ts-node constructs cdk-monitoring-constructs cdk-nag
+        run: pnpm add -D aws-cdk-lib ts-node constructs cdk-monitoring-constructs cdk-nag@2.35.0
         working-directory: tests/test-project
       - run: pnpx cdk synth --all
         working-directory: tests/test-project

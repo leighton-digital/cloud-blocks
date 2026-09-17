@@ -1,3 +1,16 @@
+# [1.7.0](https://github.com/leighton-digital/cloud-blocks/compare/v1.6.0...v1.7.0) (2026-09-17)
+
+
+### Bug Fixes
+
+* add @docusaurus/faster for docs build ([7e872f1](https://github.com/leighton-digital/cloud-blocks/commit/7e872f12a75fc0ab4be98670cfb33989b7ca4e59))
+* pin cdk-nag to v2 for CI synth ([6527287](https://github.com/leighton-digital/cloud-blocks/commit/6527287138ad0d5e5cf1eccb30a13731444fc5b6))
+
+
+### Features
+
+* created the waf ip allow list construct ([33efe89](https://github.com/leighton-digital/cloud-blocks/commit/33efe897f733eda2a8242e8f78e8d5e857a59839))
+
 # [1.6.0](https://github.com/leighton-digital/cloud-blocks/compare/v1.5.0...v1.6.0) (2026-02-18)
 
 

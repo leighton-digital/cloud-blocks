@@ -123,6 +123,48 @@ describe('S3StaticSite', () => {
     });
   });
 
+  it('throws when the access logs destination uses BUCKET_OWNER_ENFORCED', () => {
+    const stack = new Stack(new App(), 'TestStack');
+    const logBucket = new s3.Bucket(stack, 'LogBucket', {
+      objectOwnership: s3.ObjectOwnership.BUCKET_OWNER_ENFORCED,
+    });
+
+    expect(
+      () =>
+        new S3StaticSite(stack, 'StaticSite', {
+          serverAccessLogsBucket: logBucket,
+        }),
+    ).toThrow(/must allow ACLs/);
+  });
+
+  it('throws when the access logs destination omits objectOwnership (CDK/S3 default)', () => {
+    const stack = new Stack(new App(), 'TestStack');
+    const logBucket = new s3.Bucket(stack, 'LogBucket');
+
+    expect(
+      () =>
+        new S3StaticSite(stack, 'StaticSite', {
+          serverAccessLogsBucket: logBucket,
+        }),
+    ).toThrow(/must allow ACLs/);
+  });
+
+  it('throws when the access logs destination is in a different Region', () => {
+    const app = new App();
+    const siteStack = new Stack(app, 'SiteStack', { env: { region: 'eu-west-1' } });
+    const logStack = new Stack(app, 'LogStack', { env: { region: 'us-east-1' } });
+    const logBucket = new s3.Bucket(logStack, 'LogBucket', {
+      objectOwnership: s3.ObjectOwnership.OBJECT_WRITER,
+    });
+
+    expect(
+      () =>
+        new S3StaticSite(siteStack, 'StaticSite', {
+          serverAccessLogsBucket: logBucket,
+        }),
+    ).toThrow(/same Region/);
+  });
+
   it('throws when autoDeleteObjects is set without DESTROY', () => {
     const stack = new Stack(new App(), 'TestStack');
 
@@ -134,4 +176,19 @@ describe('S3StaticSite', () => {
         }),
     ).toThrow(/autoDeleteObjects requires removalPolicy/);
   });
+
+  it.each([0, -1, 1.5])(
+    'throws when noncurrentVersionExpirationDays is %p',
+    (noncurrentVersionExpirationDays) => {
+      const stack = new Stack(new App(), 'TestStack');
+
+      expect(
+        () =>
+          new S3StaticSite(stack, 'StaticSite', {
+            versioned: true,
+            noncurrentVersionExpirationDays,
+          }),
+      ).toThrow(/noncurrentVersionExpirationDays must be a positive integer/);
+    },
+  );
 });

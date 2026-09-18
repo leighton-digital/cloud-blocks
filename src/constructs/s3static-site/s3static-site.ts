@@ -1,5 +1,5 @@
 import * as s3 from 'aws-cdk-lib/aws-s3';
-import { Duration, RemovalPolicy, Tags } from 'aws-cdk-lib/core';
+import { Duration, RemovalPolicy, Stack, Tags, Token } from 'aws-cdk-lib/core';
 import { Construct } from 'constructs';
 
 export interface S3StaticSiteProps {
@@ -23,11 +23,21 @@ export interface S3StaticSiteProps {
   readonly versioned?: boolean;
   /**
    * When versioning is enabled, expire noncurrent object versions after this many days.
-   * Ignored when {@link versioned} is false.
+   * Ignored when {@link versioned} is false. Must be a positive integer when set.
    * @default 30
    */
   readonly noncurrentVersionExpirationDays?: number;
-  /** Optional destination bucket for S3 server access logs. */
+  /**
+   * Optional destination bucket for S3 server access logs.
+   *
+   * Requirements (otherwise CloudFormation may succeed while no logs are delivered):
+   * - Must allow ACLs — use {@link s3.ObjectOwnership.OBJECT_WRITER} (or
+   *   {@link s3.ObjectOwnership.BUCKET_OWNER_PREFERRED}). Destinations with
+   *   {@link s3.ObjectOwnership.BUCKET_OWNER_ENFORCED} (CDK/S3 default) cannot
+   *   receive server access logs.
+   * - Must be in the same AWS Region as this site bucket.
+   * - Should be owned by the same account as this site bucket.
+   */
   readonly serverAccessLogsBucket?: s3.IBucket;
   /** Prefix for server access log objects when {@link serverAccessLogsBucket} is set. */
   readonly serverAccessLogsPrefix?: string;
@@ -52,6 +62,21 @@ export class S3StaticSite extends Construct {
     if (autoDeleteObjects && removalPolicy !== RemovalPolicy.DESTROY) {
       throw new Error(
         'S3StaticSite: autoDeleteObjects requires removalPolicy to be RemovalPolicy.DESTROY',
+      );
+    }
+
+    if (props.serverAccessLogsBucket) {
+      validateServerAccessLogsDestination(this, props.serverAccessLogsBucket);
+    }
+
+    if (
+      versioned &&
+      props.noncurrentVersionExpirationDays !== undefined &&
+      (!Number.isInteger(props.noncurrentVersionExpirationDays) ||
+        props.noncurrentVersionExpirationDays < 1)
+    ) {
+      throw new Error(
+        'S3StaticSite: noncurrentVersionExpirationDays must be a positive integer',
       );
     }
 
@@ -88,5 +113,48 @@ export class S3StaticSite extends Construct {
     });
 
     Tags.of(this.bucket).add('Type', 'web');
+  }
+}
+
+/**
+ * Ensures the log destination can actually receive S3 server access logs.
+ * Concrete {@link s3.Bucket} instances are checked for ACL-compatible ownership;
+ * imported {@link s3.IBucket} references cannot be inspected — callers must meet
+ * the documented requirements themselves.
+ */
+function validateServerAccessLogsDestination(
+  scope: Construct,
+  destination: s3.IBucket,
+): void {
+  const sourceStack = Stack.of(scope);
+  const destinationStack = Stack.of(destination);
+
+  if (
+    !Token.isUnresolved(sourceStack.region) &&
+    !Token.isUnresolved(destinationStack.region) &&
+    sourceStack.region !== destinationStack.region
+  ) {
+    throw new Error(
+      'S3StaticSite: serverAccessLogsBucket must be in the same Region as the site bucket',
+    );
+  }
+
+  if (!(destination instanceof s3.Bucket)) {
+    return;
+  }
+
+  // BucketBase keeps ownership protected; read it for synth-time validation.
+  const ownership = (
+    destination as s3.Bucket & { objectOwnership?: s3.ObjectOwnership }
+  ).objectOwnership;
+
+  if (
+    ownership === undefined ||
+    ownership === s3.ObjectOwnership.BUCKET_OWNER_ENFORCED
+  ) {
+    throw new Error(
+      'S3StaticSite: serverAccessLogsBucket must allow ACLs (set objectOwnership to ObjectOwnership.OBJECT_WRITER). ' +
+        'BUCKET_OWNER_ENFORCED destinations (the CDK/S3 default) cannot receive S3 server access logs.',
+    );
   }
 }

@@ -1,3 +1,11 @@
+# [1.8.0](https://github.com/leighton-digital/cloud-blocks/compare/v1.7.0...v1.8.0) (2026-09-18)
+
+
+### Features
+
+* add S3 static site construct for CloudFront OAC origins ([63d2e72](https://github.com/leighton-digital/cloud-blocks/commit/63d2e72e2183225d4480b6e2302487002749c451))
+* code review comments ([fb7446c](https://github.com/leighton-digital/cloud-blocks/commit/fb7446c85024317b7dc772f07093a23be5e7b350))
+
 # [1.7.0](https://github.com/leighton-digital/cloud-blocks/compare/v1.6.0...v1.7.0) (2026-09-17)
 
 
